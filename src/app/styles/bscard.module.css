@@ -1,0 +1,38 @@
+.imgcont img {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  /* width: 444px; */
+  position: absolute;
+  bottom: -16px;
+  right: 0rem;
+}
+.imgcont {
+  position: relative;
+}
+.imgcont::after {
+  content: "";
+  position: absolute;
+  height: 343px;
+  width: 325px;
+  background: #fcdde8;
+  border-radius: 50%;
+  z-index: 1;
+  bottom: -6.5rem;
+  right: -43px;
+  background: rgba(149, 104, 255, 0.1);
+}
+.cont {
+  display: flex;
+  max-width: 653px;
+  max-height: 262px;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  justify-content: space-between;
+}
+.cont h4 {
+  color: #fff;
+  font-size: 26px;
+  width: 44%;
+  font-weight: 500;
+  margin: 10px 0;
+}

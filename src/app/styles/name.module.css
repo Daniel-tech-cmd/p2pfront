@@ -1,0 +1,91 @@
+.sec {
+  padding: 0 30px;
+  background-color: var(--headerbg);
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+  padding: 0 15px;
+  border-bottom: 1px solid hsl(var(--border) / 0.3);
+  flex-wrap: wrap;
+}
+.inner div {
+  margin: 0;
+}
+.link {
+  border: 1px solid hsl(var(--border) / 0.3);
+  border-radius: 6px;
+  color: hsl(var(--border) / 0.5);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  width: 370px;
+  gap: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.link p {
+  color: #fff;
+  font-size: 20px;
+  margin: 0;
+}
+.link button {
+  background: transparent;
+  color: hsl(var(--border) / 0.5);
+  border: none;
+  font-weight: 300;
+  display: flex;
+  border-left: 1px solid hsl(var(--border) / 0.3);
+  align-items: center;
+  cursor: pointer;
+  font-size: 8px;
+  padding: 0 5px;
+}
+.btn {
+  background-color: #157347;
+  text-decoration: none;
+}
+.nakedbtn {
+  background-color: transparent;
+  border: 1px solid hsl(var(--base));
+  color: hsl(var(--base));
+  text-decoration: none;
+}
+.nakedbtn:hover {
+  background-color: hsl(var(--base));
+  border: 1px solid hsl(var(--base));
+  color: #fff;
+}
+.btnsec {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.username {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  align-items: center;
+  padding: 0 10px;
+}
+.username span {
+  font-size: 17px;
+}
+.avater {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 770px) {
+  .btn {
+    width: 100%;
+  }
+  .btnsec {
+    justify-content: space-between;
+  }
+  .inner {
+    padding: 15px 0 0 0;
+  }
+}

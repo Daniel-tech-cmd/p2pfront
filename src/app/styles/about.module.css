@@ -1,0 +1,30 @@
+.image {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 30px 30px 30px 30px;
+  height: auto;
+}
+.cont {
+  padding: 50px 10px;
+  text-align: center;
+}
+.sec {
+  max-width: 1100px;
+  margin: auto;
+}
+.sec h4 {
+  color: var(--green);
+  margin: 0;
+  text-align: center;
+}
+.sec h1 {
+  margin: 10px 0;
+  text-align: center;
+}
+.image_cont p {
+  max-width: 500px;
+  padding: 20px;
+  width: 100%;
+  line-height: 1.8em;
+  text-align: start;
+}

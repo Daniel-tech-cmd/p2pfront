@@ -1,0 +1,89 @@
+.cont {
+  display: flex;
+  padding: 150px 0px 50px 0px;
+  max-width: 1200px;
+  /* background-image: url("../../../public//crypto-bg.png"); */
+  min-height: 800px;
+  margin: auto;
+}
+.images_cont {
+  position: relative;
+  z-index: 999;
+  max-width: fit-content;
+  margin: auto;
+}
+.images_cont > div {
+  /* position: relative; */
+  max-width: fit-content;
+}
+.img_bg {
+  object-fit: contain;
+  z-index: 999;
+  position: relative;
+}
+.strike {
+  display: flex;
+  align-items: center;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.cont h1 {
+  color: #1a1a1a;
+  font-family: var(--font-raleway);
+
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 1.1em;
+  letter-spacing: 0px;
+  max-width: 500px;
+  margin-top: 10px;
+}
+.text {
+  width: 45.169%;
+  padding: 10px;
+}
+.text p {
+  max-width: 450px;
+  line-height: 1.54rem;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+@media (max-width: 1020px) {
+  .cont {
+    flex-direction: column-reverse;
+    padding-top: 100px;
+  }
+  .text {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text h1 {
+    font-size: 2.3rem;
+    text-align: center;
+  }
+  .cont > div {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .text p {
+    text-align: center;
+  }
+}
+@media (max-width: 758px) {
+  .img_bg {
+    width: 90%;
+    max-width: 320px;
+    height: 300px;
+  }
+  .cont {
+    padding-top: 75px;
+  }
+  .cont > div {
+    margin-bottom: 0;
+  }
+}

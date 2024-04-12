@@ -1,0 +1,53 @@
+.cont {
+  background: url("/bg-nft.png");
+  padding: 50px;
+  margin-top: 30px;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.cont > div p {
+  max-width: 540px;
+  margin: auto;
+}
+.cont > div h2 {
+  align-items: center;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+.card {
+  box-shadow: 0px 40px 40px 0px rgba(209, 209, 209, 0.28);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  margin: 20px 20px 20px 20px;
+  --e-column-margin-right: 20px;
+  --e-column-margin-left: 20px;
+  padding: 30px 30px 30px 30px;
+  background-color: #ffffffed;
+  border-radius: 20px 20px 20px 20px;
+  position: relative;
+  width: fit-content;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  max-width: 295px;
+}
+.card a {
+  color: var(--green);
+  text-decoration: none;
+}
+.flex {
+  display: flex;
+}
+@media (max-width: 1020px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 758px) {
+  .cont {
+    padding: 20px;
+  }
+}

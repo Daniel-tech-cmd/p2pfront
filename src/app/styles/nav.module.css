@@ -1,0 +1,147 @@
+.sec {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 0;
+  margin-top: 0;
+  width: 100%;
+  margin-bottom: 0;
+  height: 40px;
+  position: relative;
+}
+.innersec {
+  display: flex;
+  gap: 150px;
+  padding: 10px;
+}
+.overlay {
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.66);
+  height: 100vh;
+  position: absolute;
+  display: none;
+  top: 0;
+}
+.links {
+  display: flex;
+  width: 100%;
+  margin-left: 30px;
+}
+.links a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: var(--black);
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+.links a:hover {
+  color: var(--primary);
+}
+.links > div {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+.links > div a {
+  margin: 0;
+}
+.links > div span {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-right: 10px;
+}
+.logocont {
+  display: flex;
+  align-items: center;
+}
+.smalllogo {
+  display: none !important;
+}
+.ham {
+  display: none;
+}
+.contactSec {
+  display: none !important;
+}
+@media (max-width: 1000px) {
+  .logocont {
+    margin: 0;
+  }
+  .ham {
+    margin: 0;
+  }
+  .smalllogo * {
+    margin: 0;
+  }
+  .links {
+    flex-direction: column;
+    position: fixed;
+    /* gap: 30px; */
+    margin-left: 0;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    color: var(--white);
+    z-index: 99;
+    max-width: 300px;
+    height: 100%;
+  }
+  .links a {
+    color: var(--white);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .links a:hover {
+    color: var(--white);
+  }
+  .links > div {
+    margin-left: 0;
+  }
+  .smalllogo {
+    display: flex !important;
+    margin: 20px 0;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  .smalllogo span {
+    cursor: pointer;
+    width: fit-content !important;
+    height: fit-content !important;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .links > div {
+    margin: 0 10px;
+  }
+  .contactSec {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+
+    margin-top: 20px;
+  }
+  .contactSec a {
+    display: flex;
+  }
+  .ham {
+    display: block;
+    margin-left: auto;
+    cursor: pointer;
+    color: var(--primary);
+  }
+  .none {
+    display: none !important;
+  }
+  .overlay {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.66);
+    height: 100vh;
+    position: absolute;
+    display: block;
+    top: 0;
+  }
+}
