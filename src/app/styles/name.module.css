@@ -1,6 +1,14 @@
 .sec {
   padding: 0 30px;
   background-color: var(--headerbg);
+  /* position: fixed; */
+  /* z-index: 1; */
+  /* width: fit-content; */
+  max-width: calc(100vw - 230px);
+  /* margin-bottom: 20px; */
+  position: fixed;
+  z-index: 9;
+  width: 100%;
 }
 .inner {
   display: flex;

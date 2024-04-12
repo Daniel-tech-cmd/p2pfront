@@ -18,11 +18,13 @@
   padding-top: 1.875rem;
   padding-right: 1.875rem;
   padding-left: 3.875rem;
+  margin-top: 45px;
 }
 .row {
   --bs-gutter-x: 30px;
   --bs-gutter-y: 0;
   display: flex;
+  width: 66.7%;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: calc(0 * -1);

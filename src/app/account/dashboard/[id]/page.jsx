@@ -5,6 +5,7 @@ import styles from "../../../styles/invest.module.css";
 import Image from "next/image";
 import BScard from "@/app/components/B&Scard";
 import Link from "next/link";
+import Trade from "@/app/components/Trade";
 
 export default function page() {
   return (
@@ -60,6 +61,7 @@ export default function page() {
               </div>
             </div>
           </div>
+          <Trade />
         </div>
       </div>
     </section>
