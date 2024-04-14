@@ -36,3 +36,18 @@
   font-weight: 500;
   margin: 10px 0;
 }
+@media (max-width: 758px) {
+  .cont h4 {
+    width: 100%;
+    font-size: 18px;
+  }
+  .imgcont {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .imgcont img {
+    width: 170px;
+    height: 122px;
+  }
+}

@@ -2,13 +2,13 @@ import Image from "next/image";
 // import Closenav from "./closenav";
 import Link from "next/link";
 import styles from "../styles/dashboardnav.module.css";
+import Hamburg from "./hamburg";
 // import Logout from "./Logout";
 const Sidenav = () => {
   const dat = { _id: 343 };
   return (
     <>
       <section className={styles.sec}>
-        {/* <Closenav /> */}
         <div>
           <div className={styles.imgcont}>
             <Link
@@ -16,8 +16,14 @@ const Sidenav = () => {
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
               <Image src={"/log.png"} alt="logo" width={40} height={40} />
-
-              <Image src={"/logo.png"} alt="logo" width={140} height={30} />
+              <Hamburg />
+              <Image
+                src={"/logo.png"}
+                alt="logo"
+                width={140}
+                height={30}
+                className="logo"
+              />
             </Link>
           </div>
           <div className={styles.links}>

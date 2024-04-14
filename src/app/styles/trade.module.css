@@ -1,4 +1,61 @@
 .cont {
-  max-width: 33.3%;
+  /* max-width: 33.3%; */
   width: 100%;
+}
+.cont select {
+  background-color: #15073a;
+  font-size: 15px;
+  border: 0;
+  /* background-color: var(--rgba-primary-1); */
+  border-radius: 10px !important;
+  padding-right: 60px;
+  padding-left: 20px;
+  height: 60px;
+  font-family: "Jost", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  color: #fff;
+  /* font-size: 18px; */
+  height: 48px;
+}
+.cont form p {
+  color: #9568ff;
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+.cont form button {
+  background-color: #f0a901;
+  border-color: #f0a901;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 100%;
+  padding: 0.625rem 1rem;
+  font-family: "Jost", Arial, Helvetica, sans-serif;
+  font-size: 0.813rem;
+  border: none;
+  color: #fff;
+  margin-top: 1rem;
+}
+.cont input {
+  background-color: #15073a;
+  font-size: 15px;
+  border: 0;
+  /* background-color: var(--rgba-primary-1); */
+  border-radius: 10px !important;
+  padding-right: 60px;
+  max-width: 148px;
+  padding-left: 20px;
+  height: 60px;
+  font-weight: 500;
+  color: #fff;
+  /* font-size: 18px; */
+  height: 48px;
+}
+.cont form > div {
+  padding: 0.5rem;
+}
+.cont form div > div {
+  display: flex;
+  gap: 10px;
 }

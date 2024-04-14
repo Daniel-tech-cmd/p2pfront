@@ -2,10 +2,10 @@ import React from "react";
 import Sidenav from "@/app/components/Sidenav";
 import Name from "@/app/components/Name";
 import styles from "../../../styles/invest.module.css";
-import Image from "next/image";
 import BScard from "@/app/components/B&Scard";
 import Link from "next/link";
 import Trade from "@/app/components/Trade";
+import TradingViewWidget from "@/app/components/Tradingview";
 
 export default function page() {
   return (
@@ -16,11 +16,16 @@ export default function page() {
       <div className={styles.seconddiv}>
         <Name data={{ _id: 390, username: "jkd" }} section={"Dashboard"} />
         <div className={styles.containerFluid}>
-          <div className={styles.row}>
+          <div className={styles.row} style={{ height: "fit-content" }}>
             <BScard />
             <div
               className="card"
-              style={{ maxWidth: "653px", width: "100%", padding: 0 }}
+              style={{
+                maxWidth: "653px",
+                width: "100%",
+                padding: 0,
+                maxHeight: "200px",
+              }}
             >
               <div>
                 <p
@@ -60,8 +65,13 @@ export default function page() {
                 </Link>
               </div>
             </div>
+            <div style={{ height: "450px" }} className="card">
+              <TradingViewWidget />
+            </div>
           </div>
-          <Trade />
+          <div style={{ width: "33.3%" }} className={styles.trade}>
+            <Trade />
+          </div>
         </div>
       </div>
     </section>

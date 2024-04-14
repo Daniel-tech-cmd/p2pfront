@@ -1,0 +1,20 @@
+.show {
+  display: none !important;
+}
+.dont {
+  display: none !important;
+}
+@media (max-width: 1300px) {
+  .show {
+    display: inline-block !important;
+    padding: 5px 10px !important;
+    display: flex;
+    align-items: center;
+  }
+  .show span {
+    font-size: 18px;
+  }
+  .dont {
+    display: inline-block !important;
+  }
+}

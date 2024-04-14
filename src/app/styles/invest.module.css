@@ -19,13 +19,14 @@
   padding-right: 1.875rem;
   padding-left: 3.875rem;
   margin-top: 45px;
+  display: flex;
 }
 .row {
   --bs-gutter-x: 30px;
   --bs-gutter-y: 0;
-  display: flex;
+  /* display: flex; */
   width: 66.7%;
-  flex-direction: column;
+  /* flex-direction: column; */
   flex-wrap: wrap;
   margin-top: calc(0 * -1);
   margin-right: calc(30px / -2);
@@ -37,5 +38,26 @@
   }
   .anod {
     padding: 15px;
+  }
+}
+@media (max-width: 1020px) {
+  .trade {
+    width: 100% !important;
+    margin-right: calc(30px / -2);
+    margin-left: calc(30px / -2);
+  }
+  .row {
+    width: 100%;
+  }
+  .containerFluid {
+    flex-direction: column;
+  }
+}
+@media (max-width: 758px) {
+  .containerFluid {
+    padding-left: 1.875rem;
+    margin-top: 65px;
+    display: flex;
+    padding-right: 0;
   }
 }

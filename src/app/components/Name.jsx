@@ -6,6 +6,7 @@ import Link from "next/link";
 import "react-toastify/dist/ReactToastify.css";
 // import useSignup from "../hooks/useSignup";
 import { ToastContainer, toast } from "react-toastify";
+import Hamburg from "./hamburg";
 const Name = ({ data, section }) => {
   const [showprofie, setshowprofile] = useState(false);
   // const { logout } = useSignup();
@@ -23,7 +24,8 @@ const Name = ({ data, section }) => {
             className={styles.link}
             style={{ maxWidth: "100%", wordBreak: "break-word" }}
           >
-            <Image src="/menu.svg" width={30} height={30} />
+            <Hamburg />
+            {/* <Image src="/menu.svg" width={30} height={30} /> */}
             <p>{section}</p>
           </div>
           <div className={styles.avater}>

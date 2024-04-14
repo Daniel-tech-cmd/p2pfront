@@ -125,6 +125,9 @@ p {
   box-shadow: 0rem 0.3125rem 0.3125rem 0rem rgba(82, 63, 105, 0.05);
   height: calc(100% - 30px);
 }
+.tradingview-widget-container__widget {
+  height: 350px;
+}
 .dashbtn {
   padding: 0.625rem 1rem;
   font-size: 0.813rem;
@@ -147,6 +150,15 @@ p {
   }
 }
 @media (max-width: 1020px) {
+  .dont .dashboardnav_sec__t_v5x {
+    display: none !important;
+  }
+  .show .dashboardnav_sec__t_v5x {
+    display: block !important;
+  }
+  .logo {
+    display: none;
+  }
 }
 @media (max-width: 758px) {
   .icon2 {
@@ -154,6 +166,9 @@ p {
     left: 50px;
     width: 30px;
     height: auto;
+  }
+  .card {
+    padding: 1rem;
   }
   .icon1 {
     width: 30px;

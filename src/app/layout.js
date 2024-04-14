@@ -1,5 +1,6 @@
 import { Jost, Raleway } from "next/font/google";
 import "./globals.css";
+import { NavProvider } from "./contexts/navcon";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${jost.variable} ${raleway.variable} `}>
-        {children}
+        <NavProvider>{children}</NavProvider>
       </body>
     </html>
   );
