@@ -10,9 +10,7 @@ export const NavProvider = ({ children }) => {
   const toggle = () => {
     setMode((prev) => (prev === "dont" ? "show" : "dont"));
   };
-  useEffect(() => {
-    // setMode(JSON.parse(localStorage.getItem("mode")));
-  }, []);
+
   return (
     <navcon.Provider value={{ toggle, mode, setMode }}>
       <div className={mode}> {children} </div>

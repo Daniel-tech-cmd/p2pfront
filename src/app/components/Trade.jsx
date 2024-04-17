@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import React from "react";
+import Image from "next/image";
 import styles from "../styles/trade.module.css";
 
 export default function Trade() {
@@ -45,6 +46,16 @@ export default function Trade() {
             />
           </div>
         </div>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: "1rem",
+          }}
+        >
+          <Image width={20} height={20} alt="" src="/swap.png" />
+        </div>
         <div>
           <p>I'm Receiving</p>
           <div>
@@ -63,6 +74,7 @@ export default function Trade() {
             />
           </div>
         </div>
+
         <div>
           <p>Your role</p>
           <select name="role" id="role" style={{ width: "100%" }}>

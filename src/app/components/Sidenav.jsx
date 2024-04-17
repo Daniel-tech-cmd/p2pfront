@@ -1,30 +1,30 @@
+"use client";
 import Image from "next/image";
-// import Closenav from "./closenav";
 import Link from "next/link";
 import styles from "../styles/dashboardnav.module.css";
 import Hamburg from "./hamburg";
-// import Logout from "./Logout";
+import { useContext } from "react";
+import { openseccon } from "../contexts/openseccontext";
+import { navcon } from "../contexts/navcon";
+
 const Sidenav = () => {
+  const { show, toggle, toggledepo, togglewith } = useContext(openseccon);
+  const { toggle: tog } = useContext(navcon);
   const dat = { _id: 343 };
   return (
     <>
       <section className={styles.sec}>
         <div>
           <div className={styles.imgcont}>
-            <Link
-              href={`/account/dashboard/${dat?._id}`}
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <Image src={"/log.png"} alt="logo" width={40} height={40} />
-              <Hamburg />
-              <Image
-                src={"/logo.png"}
-                alt="logo"
-                width={140}
-                height={30}
-                className="logo"
-              />
-            </Link>
+            <Image src={"/log.png"} alt="logo" width={40} height={40} />
+            <Hamburg />
+            <Image
+              src={"/logo.png"}
+              alt="logo"
+              width={140}
+              height={30}
+              className="logo"
+            />
           </div>
           <div className={styles.links}>
             <Link
@@ -36,32 +36,38 @@ const Sidenav = () => {
               </span>
               Dashboard
             </Link>
-            <Link className={styles.link} href={`/account/invest/${dat?._id}`}>
+            <Link className={styles.link} href={`/new-trade`}>
               <span className="material-symbols-outlined notranslate">
                 crowdsource
               </span>
-              Invest
+              Initiate trade
             </Link>
 
-            <Link className={styles.link} href={`/deposit-history/${dat?._id}`}>
+            <Link
+              className={styles.link}
+              href={`#`}
+              onClick={() => {
+                tog(), toggle();
+              }}
+            >
               <span className="material-symbols-outlined notranslate">
                 deployed_code_history
               </span>
-              Deposit history
+              Join trade
             </Link>
 
-            <Link className={styles.link} href={`/transactions/${dat?._id}`}>
+            <Link className={styles.link} href={`#`} onClick={toggledepo}>
               <span className="material-symbols-outlined notranslate">
-                history
+                attach_money
               </span>
-              Transaction history
+              Deposit crypto
             </Link>
 
-            <Link className={styles.link} href={`/support/${dat?._id}`}>
+            <Link className={styles.link} href={`#`} onClick={togglewith}>
               <span className="material-symbols-outlined notranslate">
                 contact_emergency
               </span>
-              Get support
+              Withdraw crypto
             </Link>
             <Link className={styles.link} href={"#"}>
               <span className="material-symbols-outlined notranslate">

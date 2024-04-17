@@ -4,6 +4,7 @@
 }
 body {
   font-family: "var(--font-jost)", jost;
+  font-size: 0.875rem;
   margin: 0;
 }
 img {
@@ -137,6 +138,83 @@ p {
   font-weight: 500;
   text-transform: capitalize;
   border-radius: 5px;
+}
+.table {
+  margin: 0;
+  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+  font-size: 0.9375rem;
+  width: 100%;
+  min-width: 600px;
+  overflow: auto;
+}
+.table > thead {
+  vertical-align: bottom;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+th {
+  font-size: 0.688rem;
+}
+.table thead tr th {
+  background-color: transparent;
+  padding: 10px 15px;
+  color: hsl(217 6% 60%);
+  /* font-family: var(--heading-font); */
+  font-weight: 400;
+  border-bottom: 0;
+  text-align: left;
+  max-width: 170px;
+}
+.table tbody {
+  border: 0 !important;
+  background-color: transparent;
+}
+.table thead th {
+  border-bottom: 0.0625rem solid #eeee;
+  text-transform: capitalize;
+  font-size: 1rem;
+  border-color: #3a2d60;
+  color: #fff;
+  white-space: nowrap;
+  color: #fff !important;
+  font-weight: 500;
+  border-color: #eeee !important;
+}
+.table tbody span {
+  vertical-align: middle;
+  border-color: #eeee;
+  white-space: nowrap;
+}
+.table tbody tr td {
+  color: #fff;
+  text-transform: capitalize;
+  vertical-align: middle;
+  /* display: flex; */
+  border-color: #eeee;
+  white-space: nowrap;
+}
+tbody span {
+  font-size: 12px;
+}
+tbody small {
+  font-size: 10px;
+}
+.table > tbody {
+  vertical-align: inherit;
+}
+.table tbody tr:last-child {
+  border-bottom: 0;
 }
 @keyframes float {
   0% {

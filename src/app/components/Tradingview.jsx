@@ -26,9 +26,8 @@ const TradingViewWidget = () => {
 
     return () => {
       // Clean up function to remove the script when the component unmounts
-      document
-        .querySelector(".tradingview-widget-container__widget")
-        .removeChild(script);
+      document.querySelector(".tradingview-widget-container__widget");
+      // .removeChild(script);
     };
   }, []);
 
