@@ -43,7 +43,7 @@ export default function page() {
               </div>
               <div>
                 <p style={{ textAlign: "start" }}>
-                  It’s an exciting time to become a pair trader.
+                  Its an exciting time to become a pair trader.
                 </p>
               </div>
               <div>

@@ -2,6 +2,7 @@ import { Jost, Raleway } from "next/font/google";
 import "./globals.css";
 import { NavProvider } from "./contexts/navcon";
 import { OpenProvider } from "./contexts/openseccontext";
+import { AuthContextProvider } from "./contexts/AuthContext";
 import Poop from "./components/pop";
 
 const jost = Jost({
@@ -34,12 +35,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${jost.variable} ${raleway.variable} `}>
-        <OpenProvider>
-          <NavProvider>
-            {children}
-            <Poop />
-          </NavProvider>
-        </OpenProvider>
+        <AuthContextProvider>
+          <OpenProvider>
+            <NavProvider>
+              {children}
+              <Poop />
+            </NavProvider>
+          </OpenProvider>
+        </AuthContextProvider>
       </body>
     </html>
   );
