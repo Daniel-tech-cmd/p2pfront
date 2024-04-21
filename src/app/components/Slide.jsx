@@ -42,6 +42,7 @@ export default function Slide() {
         autoPlayControls={false}
         infinite={true}
         keyboardNavigation={true}
+        key={items.length}
         disableButtonsControls={true}
         disableDotsControls={true}
         itemsFit={"contain"}

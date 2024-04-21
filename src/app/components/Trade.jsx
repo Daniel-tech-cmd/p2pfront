@@ -76,7 +76,7 @@ export default function Trade() {
         }}
       >
         <div>
-          <p>I'm sending</p>
+          <p>I&apos;m sending</p>
           <div>
             <select
               name="coins"
@@ -112,7 +112,7 @@ export default function Trade() {
           <Image width={20} height={20} alt="" src="/swap.png" />
         </div>
         <div>
-          <p>I'm Receiving</p>
+          <p>I&apos;m Receiving</p>
           <div>
             <select
               name="coins"

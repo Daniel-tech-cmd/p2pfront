@@ -75,12 +75,12 @@ const Fq = () => {
                     {show && (
                       <p className={styles.answer}>
                         Signing up is simple! Click on the &quot;Sign Up&quot;
-                        or &quot;Register&quot; button on our website&aposs
+                        or &quot;Register&quot; button on our website&apos;s
                         homepage. Fill in the required information, including
                         your name, email address, and password. Once done,
-                        you&aposll receive a confirmation email to verify your
+                        you&apos;ll receive a confirmation email to verify your
                         account. Follow the link provided in the email, and
-                        you&aposre all set to log in and start investing.
+                        you&apos;re all set to log in and start investing.
                       </p>
                     )}
                   </div>
@@ -144,7 +144,7 @@ const Fq = () => {
                       <p className={styles.answer}>
                         Step 1:login your user dashboard, select &quot;create
                         trade&quot; and fill in the necessary details. Step 2:
-                        Enter the recipient's email address. Use the email
+                        Enter the recipient&apos;s email address. Use the email
                         address associated with the recipient&aposs Binance
                         account. Step 3: Select the amount and the
                         cryptocurrency you wish to send (no minimum amount

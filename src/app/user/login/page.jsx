@@ -24,7 +24,7 @@ const Login = () => {
             <div className={styles.linkcont}>
               <div>
                 <div>
-                  <span>Don't have an account?</span>
+                  <span>Don&apos;t have an account?</span>
                   <Link href={"/user/signup"}>Sign up</Link>
                 </div>
 

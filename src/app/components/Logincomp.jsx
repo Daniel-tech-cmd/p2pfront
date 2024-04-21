@@ -83,7 +83,9 @@ const Logincomp = () => {
             setemail(e.target.value);
           }}
         />
-        {noemail && <span className={styles.error}>Email can't be empty</span>}
+        {noemail && (
+          <span className={styles.error}>Email can&apos;t be empty</span>
+        )}
         <div
           style={{
             display: "flex",

@@ -35,7 +35,7 @@ export default function page() {
           </h3>
           <p style={{ margin: 0 }}>
             Welcome to the P2P Experience!, where you can initiate new trades
-            effortlessly. Whether you're buying, selling, or exchanging
+            effortlessly. Whether you&apos;re buying, selling, or exchanging
             cryptocurrencies, our user-friendly platform streamlines the process
             for you.
           </p>
