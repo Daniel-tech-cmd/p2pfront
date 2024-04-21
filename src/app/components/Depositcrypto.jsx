@@ -5,11 +5,55 @@ import { useState } from "react";
 import Image from "next/image";
 import { openseccon } from "../contexts/openseccontext";
 import { useContext } from "react";
+import useFetch from "../hooks/useFetch";
 
 export default function Depositcrypto() {
-  const [amount, setamonunt] = useState();
+  const [amount, setamonunt] = useState(0);
   const { toggledepo } = useContext(openseccon);
   const [second, setsecond] = useState(false);
+  const { depositfun, error, isLoading } = useFetch();
+
+  const coins = [
+    {
+      name: "ethereum",
+      id: "eth",
+      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
+      image: "ethereum.jpg",
+      ico: "ethico.png",
+    },
+    {
+      name: "bitcoin",
+      id: "btc",
+      address: "bc1qzy3fzdywkxg88nhj77wtrr7nel6v3vql5mvmsa",
+      image: "bitcoin.jpg",
+      ico: "bitico.png",
+    },
+  ];
+  const [selectedcoin, setselectedcoin] = useState(coins[0]);
+
+  const hnadledeposit = async (e) => {
+    e.preventDefault();
+    // toast.dismiss();
+    if (selectedcoin == "" || amount == "") {
+      return;
+    } else if (selectedcoin.name === "bank wire") {
+      toast.warning("Bank wire option is currently not available");
+    } else {
+      try {
+        console.log(amount);
+        const data = {
+          amount: amount,
+          asset: selectedcoin.name,
+          method: selectedcoin.name,
+        };
+        await depositfun(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // toast.error("ab");
+  };
+
   return (
     <>
       {!second && (
@@ -28,8 +72,13 @@ export default function Depositcrypto() {
               </button>
             </div>
             <div>
-              <Image src="/poly.png" width={50} height={50} alt="" />
-              <h3>0.00</h3>
+              <Image
+                src={`/${selectedcoin.ico}`}
+                width={50}
+                height={50}
+                alt=""
+              />
+              <h3>{amount.toFixed(2)}</h3>
             </div>
             <label
               style={{
@@ -42,15 +91,27 @@ export default function Depositcrypto() {
               select coin
             </label>
             <div className={styles.inputdepo} style={{ borderBottom: "none" }}>
-              <select>
-                <option value="polygon">polygon</option>
+              <select
+                onChange={(e) => {
+                  setselectedcoin(
+                    coins.find((obj) => obj.name === e.target.value)
+                  );
+                }}
+                style={{ textTransform: "capitalize", fontFamily: "Jost" }}
+              >
+                {coins.map((coi) => (
+                  <option key={coi.id} value={coi.name}>
+                    {coi.name}
+                  </option>
+                ))}
+                {/* <option value="polygon">polygon</option> */}
               </select>
               <div style={{ display: "flex" }}>
                 <input
                   placeholder="o.oo"
                   type="number"
                   onChange={(e) => {
-                    setamonunt(e.target.value);
+                    setamonunt(Number(e.target.value));
                   }}
                 />
                 <span>Amount</span>
@@ -103,18 +164,31 @@ export default function Depositcrypto() {
               </button>
             </div>
             <div>
-              <Image src="/poly.png" width={160} height={160} alt="" />
+              <Image
+                src={`/${selectedcoin.image}`}
+                width={160}
+                height={160}
+                alt=""
+                style={{ objectFit: "contain" }}
+              />
               <div style={{ padding: "0 30px" }}>
                 {" "}
-                <p style={{ marginTop: "0" }}>
-                  Deposit address: kjskajskaskjasjasjnasajsjsjansjhhsa
+                <p
+                  style={{
+                    marginTop: "0",
+                    wordWrap: "break-word",
+                    fontSize: "12px",
+                  }}
+                >
+                  Deposit address: {selectedcoin.address}
                 </p>
                 <p>
                   <b>Deposit Amount:</b>
                   {amount}
                 </p>
                 <p>
-                  <b>Deposit asset:</b>xrd
+                  <b>Deposit asset:</b>
+                  {selectedcoin.name}
                 </p>
                 <button
                   style={{
@@ -129,8 +203,9 @@ export default function Depositcrypto() {
                     textTransform: "capitalize",
                     fontFamily: "Jost",
                   }}
+                  onClick={hnadledeposit}
                 >
-                  Confirm deposit
+                  {isLoading ? "Loading..." : "Confirm deposit"}
                 </button>
               </div>
             </div>

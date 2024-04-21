@@ -65,7 +65,10 @@ export default function page() {
                 </Link>
               </div>
             </div>
-            <div style={{ height: "450px" }} className="card">
+            <div
+              style={{ height: "450px", overflow: "hidden" }}
+              className="card"
+            >
               <TradingViewWidget />
             </div>
           </div>

@@ -64,11 +64,12 @@ export default function page() {
                 <p>
                   Welcome to P2PDESK, your trusted partner in the world of
                   cryptocurrency. We are proud to be a crucial part of your
-                  trading experience., one of the world's leading cryptocurrency
-                  exchanges. At P2PDESK, we're more than just a cryptocurrency
-                  escrow and P2P trading platform. We're a community of crypto
-                  enthusiasts, technologists, and traders committed to
-                  revolutionizing the way you trade digital assets.
+                  trading experience., one of the world&apos;s leading
+                  cryptocurrency exchanges. At P2PDESK, we&apos;re more than
+                  just a cryptocurrency escrow and P2P trading platform.
+                  We&apos;re a community of crypto enthusiasts, technologists,
+                  and traders committed to revolutionizing the way you trade
+                  digital assets.
                 </p>
               </div>
             </div>

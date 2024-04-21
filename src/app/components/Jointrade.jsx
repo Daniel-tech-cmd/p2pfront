@@ -5,10 +5,28 @@ import { useState } from "react";
 import styles from "../styles/jointrade.module.css";
 import { openseccon } from "../contexts/openseccontext";
 import { useContext } from "react";
+import useFetch from "../hooks/useFetch";
 
 export default function Jointrade() {
   const { toggle } = useContext(openseccon);
   const [code, setcode] = useState();
+  const { jointrade, error, isLoading, responseData, checktrade, showfetch } =
+    useFetch();
+
+  const handlejointrade = async () => {
+    if (code == "") {
+      return;
+    }
+    try {
+      const data = {
+        id: code.trim().toUpperCase(),
+      };
+      await checktrade(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.model}>
       <div className={styles.innermodel}>
@@ -30,13 +48,92 @@ export default function Jointrade() {
             <input
               placeholder="TXNXXXX"
               type="text"
+              onKeyUp={handlejointrade}
               onChange={(e) => {
                 setcode(e.target.value);
               }}
             />
             <span>#ID</span>
           </div>
+          {error && (
+            <p style={{ color: "red" }}>
+              <b>{error}</b>
+            </p>
+          )}
         </div>
+        {showfetch && !error ? (
+          <div style={{ flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <p
+                style={{
+                  width: "50%",
+                  borderBottom: "1px solid #3a2d60",
+                  padding: "10px",
+                  margin: 0,
+                  color: "beige",
+                }}
+              >
+                <b>Buying</b>:{responseData?.assettobuy}
+              </p>
+              <p
+                style={{
+                  width: "50%",
+                  borderBottom: "1px solid #3a2d60",
+                  padding: "10px",
+                  margin: 0,
+                  color: "beige",
+                }}
+              >
+                <b>Buyer</b>:
+                {responseData?.buyer == "" ? "pending" : responseData?.buyer}
+              </p>
+            </div>
+            <div style={{ display: "flex", gap: "20px" }}>
+              <p
+                style={{
+                  width: "50%",
+                  borderBottom: "1px solid #3a2d60",
+                  padding: "10px",
+                  margin: 0,
+                  color: "beige",
+                }}
+              >
+                <b>Selling</b>:{responseData?.assettosell}
+              </p>
+              <p
+                style={{
+                  width: "50%",
+                  borderBottom: "1px solid #3a2d60",
+                  padding: "10px",
+                  margin: 0,
+                  color: "beige",
+                }}
+              >
+                <b>Seller</b>:
+                {responseData?.seller == "" ? "pending" : responseData?.seller}
+              </p>
+            </div>
+            <button
+              style={{
+                background: "#9568FF",
+                color: "#fff",
+                borderColor: "#9568FF",
+                padding: "0.625rem 1rem",
+                fontSize: "0.813rem",
+                borderRadius: " 0.5rem",
+                fontWeight: 600,
+                lineHeight: 1.5,
+                textTransform: "capitalize",
+                fontFamily: "Jost",
+                cursor: "pointer",
+              }}
+            >
+              Join trade
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
         <div>
           <button className={styles.btnclose} onClick={toggle}>
             close

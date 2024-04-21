@@ -5,13 +5,15 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { openseccon } from "../contexts/openseccontext";
+import { useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
   const [verify, setverify] = useState(null);
-
+  const { togglesucces, togglealert } = useContext(openseccon);
   const { dispatch, user } = useAuthContext();
   const router = useRouter();
   const signup = async (data) => {
@@ -48,7 +50,8 @@ const useSignup = () => {
             });
             Cookies.set("user", JSON.stringify(response.data));
             setIsLoading(false);
-            router.push(`/account/${response?.data?._id}`);
+            togglesucces();
+            // router.push(`/account/${response?.data?._id}`);
           } catch (error) {
             console.log(error);
           }

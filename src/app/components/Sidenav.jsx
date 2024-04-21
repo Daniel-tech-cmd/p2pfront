@@ -56,7 +56,13 @@ const Sidenav = () => {
               Join trade
             </Link>
 
-            <Link className={styles.link} href={`#`} onClick={toggledepo}>
+            <Link
+              className={styles.link}
+              href={`#`}
+              onClick={() => {
+                tog(), toggledepo();
+              }}
+            >
               <span className="material-symbols-outlined notranslate">
                 attach_money
               </span>

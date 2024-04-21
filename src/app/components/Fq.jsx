@@ -74,13 +74,13 @@ const Fq = () => {
                     </p>
                     {show && (
                       <p className={styles.answer}>
-                        Signing up is simple! Click on the "Sign Up" or
-                        "Register" button on our website's homepage. Fill in the
-                        required information, including your name, email
-                        address, and password. Once done, you'll receive a
-                        confirmation email to verify your account. Follow the
-                        link provided in the email, and you're all set to log in
-                        and start investing.
+                        Signing up is simple! Click on the &quot;Sign Up&quot;
+                        or &quot;Register&quot; button on our website&aposs
+                        homepage. Fill in the required information, including
+                        your name, email address, and password. Once done,
+                        you&aposll receive a confirmation email to verify your
+                        account. Follow the link provided in the email, and
+                        you&aposre all set to log in and start investing.
                       </p>
                     )}
                   </div>
@@ -99,12 +99,13 @@ const Fq = () => {
                     {show1 && (
                       <p className={styles.answer}>
                         After filling in the necessary details on the create
-                        trade page. Kindly proceed to the “MAKE PAYMENT” option
-                        and pay the token that has been set to you. Once payment
-                        from both parties gets confirmed then you can click the
-                        “WITHDRAW TOKEN” option next. insert your token
-                        withdrawal address and send your receiving token will be
-                        sent to your wallet within 3-5 mins.
+                        trade page. Kindly proceed to the &quot;MAKE
+                        PAYMENT&quot; option and pay the token that has been set
+                        to you. Once payment from both parties gets confirmed
+                        then you can click the &quot;WITHDRAW TOKEN&quot; option
+                        next. insert your token withdrawal address and send your
+                        receiving token will be sent to your wallet within 3-5
+                        mins.
                       </p>
                     )}
                   </div>
@@ -141,12 +142,13 @@ const Fq = () => {
                     </p>
                     {show3 && (
                       <p className={styles.answer}>
-                        Step 1:login your user dashboard, select “create trade”
-                        and fill in the necessary details. Step 2: Enter the
-                        recipient's email address. Use the email address
-                        associated with the recipient's Binance account. Step 3:
-                        Select the amount and the cryptocurrency you wish to
-                        send (no minimum amount required).
+                        Step 1:login your user dashboard, select &quot;create
+                        trade&quot; and fill in the necessary details. Step 2:
+                        Enter the recipient's email address. Use the email
+                        address associated with the recipient&aposs Binance
+                        account. Step 3: Select the amount and the
+                        cryptocurrency you wish to send (no minimum amount
+                        required).
                       </p>
                     )}
                   </div>

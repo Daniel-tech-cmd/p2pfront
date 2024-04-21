@@ -3,10 +3,53 @@ import { useState } from "react";
 import React from "react";
 import Image from "next/image";
 import styles from "../styles/trade.module.css";
+import useFetch from "../hooks/useFetch";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Trade() {
-  const [amounttosend, setamounttosend] = useState();
-  const [amounttorecieve, setamounttorecieve] = useState();
+  const { user } = useAuthContext();
+
+  const { trade, error, isLoading } = useFetch();
+
+  const [amounttosend, setamounttosend] = useState("");
+  const [amounttorecieve, setamounttorecieve] = useState("");
+  const [assettobuy, setassettobuy] = useState("");
+  const [assettosell, setassettosell] = useState("");
+  const [whopaysfee, setwhopaysfee] = useState("split");
+  const [role, setrole] = useState("");
+  const [buyer, setbuyer] = useState("");
+  const [seller, setseller] = useState("");
+
+  const handletrade = async (e) => {
+    e.preventDefault();
+    if (role == "") {
+      toast.error("Role can't be empty!");
+      return;
+    }
+    if (
+      (amounttorecieve == "" || amounttosend == "",
+      assettobuy == "",
+      assettosell == "")
+    ) {
+      toast.error(" all  fields must be filled");
+      return;
+    }
+    const data = {
+      assettobuy,
+      assettosell,
+      whopaysfee,
+      buyer,
+      seller,
+    };
+    try {
+      await trade(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       className={`${styles.cont} card`}
@@ -27,11 +70,23 @@ export default function Trade() {
       >
         Start a new trade
       </p>
-      <form onSubmit={() => {}}>
+      <form
+        onSubmit={(e) => {
+          handletrade(e);
+        }}
+      >
         <div>
           <p>I'm sending</p>
           <div>
-            <select name="coins" id="coins">
+            <select
+              name="coins"
+              id="coins"
+              onChange={(e) => {
+                setassettosell(e.target.value);
+              }}
+            >
+              <option value="">select coin</option>
+
               <option value="Bitcoin">Bitcoin</option>
               <option value="Litcoin">Litcoin</option>
               <option value="Dodge">Dodge</option>
@@ -59,7 +114,15 @@ export default function Trade() {
         <div>
           <p>I'm Receiving</p>
           <div>
-            <select name="coins" id="coins">
+            <select
+              name="coins"
+              id="coins"
+              onChange={(e) => {
+                setassettobuy(e.target.value);
+              }}
+            >
+              <option value="">select coin</option>
+
               <option value="Bitcoin">Bitcoin</option>
               <option value="Litcoin">Litcoin</option>
               <option value="Dodge">Dodge</option>
@@ -77,14 +140,39 @@ export default function Trade() {
 
         <div>
           <p>Your role</p>
-          <select name="role" id="role" style={{ width: "100%" }}>
-            <option value="Buyer">Buyer</option>
-            <option value="Seller">Seller</option>
+          <select
+            name="role"
+            id="role"
+            style={{ width: "100%" }}
+            onChange={(e) => {
+              setrole(e.target.value);
+              if (e.target.value == "buyer") {
+                setbuyer(user?.username);
+                setseller("");
+              } else if (e.target.value == "seller") {
+                setseller(user?.username);
+                setbuyer("");
+              }
+            }}
+          >
+            <option value="">select role</option>
+
+            <option value="buyer">Buyer</option>
+            <option value="seller">Seller</option>
           </select>
         </div>
         <div>
           <p>who pays the gas fee</p>
-          <select name="role" id="role" style={{ width: "100%" }}>
+          <select
+            name="role"
+            id="role"
+            style={{ width: "100%" }}
+            onChange={(e) => {
+              setwhopaysfee(e.target.value);
+            }}
+          >
+            <option value="">select</option>
+
             <option value="Split">Split</option>
             <option value="Buyer">Buyer</option>
             <option value="Seller">Seller</option>
@@ -92,6 +180,12 @@ export default function Trade() {
           <button>Publish Trade</button>
         </div>
       </form>
+      {error && (
+        <p style={{ color: "red" }}>
+          <b>{error}</b>
+        </p>
+      )}
+      <ToastContainer />
     </div>
   );
 }

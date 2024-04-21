@@ -1,0 +1,22 @@
+.cont {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #15172a;
+}
+.cont > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  background-image: radial-gradient(at top left, #15172a 0%, #353c71 80%);
+  padding: 20px;
+  color: var(--primary);
+  border-radius: 5px 1px 5px 1px;
+  min-height: 300px;
+  min-width: 300px;
+}
+.cont a {
+  padding: 10px 20px;
+}

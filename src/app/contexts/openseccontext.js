@@ -8,6 +8,8 @@ export const OpenProvider = ({ children }) => {
   const [show, setshow] = useState(false);
   const [showdepo, setshowdepo] = useState(false);
   const [showwith, setshowwith] = useState(false);
+  const [showsuccess, setshowsuccess] = useState(false);
+  const [showalert, setshowalert] = useState(false);
 
   const toggle = () => {
     setshow((prev) => (prev === true ? false : true));
@@ -22,6 +24,13 @@ export const OpenProvider = ({ children }) => {
     setshowwith((prev) => (prev === true ? false : true));
   };
 
+  const togglesucces = () => {
+    setshowsuccess((prev) => (prev === true ? false : true));
+    console.log(showsuccess);
+  };
+  const toggleshowalert = () => {
+    setshowalert((prev) => (prev === true ? false : true));
+  };
   return (
     <openseccon.Provider
       value={{
@@ -34,6 +43,11 @@ export const OpenProvider = ({ children }) => {
         togglewith,
         showwith,
         setshowwith,
+        showsuccess,
+        showalert,
+        toggleshowalert,
+        setshowsuccess,
+        togglesucces,
       }}
     >
       <div> {children} </div>

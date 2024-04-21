@@ -4,6 +4,8 @@ import { useAuthContext } from "./useAuthContext";
 import { useRouter } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { useContext } from "react";
+import { openseccon } from "../contexts/openseccontext";
 
 import Cookies from "js-cookie";
 const useFetch = () => {
@@ -11,6 +13,10 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
   const { user, dispatch } = useAuthContext();
+  const [showfetch, setshowfetch] = useState(false);
+
+  const { togglesucces, toggleshowalert } = useContext(openseccon);
+
   const router = useRouter();
   const fetchDataAll = async (url) => {
     setError(null);
@@ -153,10 +159,10 @@ const useFetch = () => {
         toast.error("Network error");
       }
       if (response.ok) {
-        toast.success("Deposit request, successful.");
-
         setResponseData(response);
         setIsLoading(false);
+        toggleshowalert();
+        toast.success("Deposit request, successful.");
         // toast.dismiss();
       }
 
@@ -314,50 +320,6 @@ const useFetch = () => {
     }
   }
 
-  async function reinvest(data) {
-    setError(null);
-    setIsLoading(true);
-    try {
-      const response = await axios.patch(
-        `${process.env.NEXT_PUBLIC_URL}/api/transact/reinvest/${user?._id}`,
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${user?.token}`,
-          },
-        }
-      );
-
-      if (response.status !== 200) {
-        setIsLoading(false);
-        setError(response.data.error);
-      }
-
-      if (response.status === 200) {
-        setResponseData(response.data);
-        setIsLoading(false);
-        toast.success("Re-investment Request,succesful!");
-      }
-    } catch (error) {
-      setIsLoading(false);
-      if (error?.message) {
-        if (error.message.includes("ENOTFOUND")) {
-          setError("Network error");
-        } else {
-          setError(error.message);
-        }
-      }
-      if (error?.response?.data.error) {
-        if (error.response?.data.error.includes("ENOTFOUND")) {
-          setError("Network error");
-        } else {
-          setError(error.response.data.error);
-          toast.error(error.response.data.error);
-        }
-      }
-    }
-  }
   async function forgot(data) {
     setError(null);
     setIsLoading(true);
@@ -463,21 +425,187 @@ const useFetch = () => {
       }
     }
   }
+  async function trade(data) {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/transact/trade/${user?._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
+      if (!response.ok) {
+        setError("Trade error ");
+        setIsLoading(false);
+        toast.error("Network error");
+      }
+      if (response.ok) {
+        setResponseData(response);
+        setIsLoading(false);
+        toggleshowalert();
+        toast.success("Trade request, successful.");
+        // toast.dismiss();
+      }
+
+      // Handle successful response here, e.g., show a success message
+    } catch (error) {
+      // Handle error here, e.g., display an error message or log the error
+      console.error(error.message);
+      setError(error.message);
+      setIsLoading(false);
+    }
+  }
+
+  async function jointrade(data) {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_URL}/api/transact/jointrade/${user?._id}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        setIsLoading(false);
+        setError(response.data.error);
+      }
+
+      // if (!response.ok) {
+      // 	setError('Failed to update post ');
+      // 	setIsLoading(false);
+      // }
+      if (response.status === 200) {
+        setResponseData(response.data);
+        setIsLoading(false);
+        toast.success("Trade Found");
+        toast.success("Investment Request,succesful!");
+      }
+    } catch (error) {
+      if (error?.message) {
+        if (error.message.includes("ENOTFOUND")) {
+          setError("Network error");
+          toast.error("Network error");
+        } else {
+          setError(error.message);
+          // toast.error(error.message);
+          setIsLoading(false);
+        }
+      }
+      if (error?.response?.data.error) {
+        if (error.response?.data.error.includes("ENOTFOUND")) {
+          setError("Network error");
+          toast.error("Network error");
+        } else {
+          setError(error.response.data.error);
+          setIsLoading(false);
+          toast.error(error.response.data.error);
+        }
+      }
+      console.log(error);
+    }
+  }
+  async function checktrade(data) {
+    setError(null);
+    setIsLoading(true);
+    setResponseData(null);
+    try {
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_URL}/api/transact/checktrade/${user?._id}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+      if (response.status !== 200) {
+        setIsLoading(false);
+        setError(response.data.error);
+      }
+
+      // if (!response.ok) {
+      // 	setError('Failed to update post ');
+      // 	setIsLoading(false);
+      // }
+      if (response.status === 200) {
+        setResponseData(response.data);
+        setIsLoading(false);
+        setshowfetch(true);
+        // toast.success("trade found!");
+      }
+    } catch (error) {
+      setshowfetch(false);
+      if (error?.message) {
+        if (error.message.includes("ENOTFOUND")) {
+          setError("Network error");
+          // toast.error("Network error");
+        } else {
+          setError(error.message);
+          // toast.error(error.message);
+          setIsLoading(false);
+        }
+      }
+      if (error?.response?.data.error) {
+        if (error.response?.data.error.includes("ENOTFOUND")) {
+          setError("Network error");
+          // toast.error("Network error");
+        } else {
+          setError(error.response.data.error);
+          setIsLoading(false);
+          // toast.error(error.response.data.error);
+        }
+      }
+    }
+  }
+  async function checkT(data) {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URL}/api/transact/jointrade/${user?._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return {
     responseData,
     error,
     withdraw,
     fetchDataAll,
+    checkT,
+    trade,
     deleteData,
     change,
     forgot,
     isLoading,
     updatePost,
-    reinvest,
     depositfun,
     invest,
+    checktrade,
     transfer,
+    showfetch,
+    jointrade,
   };
 };
 export default useFetch;
