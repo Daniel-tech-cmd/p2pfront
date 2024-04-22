@@ -7,8 +7,11 @@ import { useAuthContext } from "./useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { openseccon } from "../contexts/openseccontext";
 import { useContext } from "react";
+import { useDispatch } from "react-redux";
+import { createuser } from "../../redux/shopslice";
 import "react-toastify/dist/ReactToastify.css";
 const useSignup = () => {
+  const distp = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
@@ -49,7 +52,9 @@ const useSignup = () => {
               payload: response.data,
             });
             Cookies.set("user", JSON.stringify(response.data));
+            distp(createuser(response.data));
             setIsLoading(false);
+
             togglesucces();
             // router.push(`/account/${response?.data?._id}`);
           } catch (error) {

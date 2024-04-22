@@ -4,6 +4,7 @@ import { NavProvider } from "./contexts/navcon";
 import { OpenProvider } from "./contexts/openseccontext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import Poop from "./components/pop";
+import Layou from "./components/Layou";
 
 const jost = Jost({
   subsets: ["latin"],
@@ -35,14 +36,16 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${jost.variable} ${raleway.variable} `}>
-        <AuthContextProvider>
-          <OpenProvider>
-            <NavProvider>
-              {children}
-              <Poop />
-            </NavProvider>
-          </OpenProvider>
-        </AuthContextProvider>
+        <Layou>
+          <AuthContextProvider>
+            <OpenProvider>
+              <NavProvider>
+                {children}
+                <Poop />
+              </NavProvider>
+            </OpenProvider>
+          </AuthContextProvider>
+        </Layou>
       </body>
     </html>
   );

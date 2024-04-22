@@ -1,0 +1,31 @@
+.cont {
+  background: rgba(149, 104, 255, 0.1);
+  border-color: rgba(149, 104, 255, 0.1);
+  color: #9568ff;
+  border-radius: 0.625rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  transition: opacity 0.15s linear;
+  position: relative;
+}
+.cont svg {
+  margin-right: 0.5rem;
+}
+.cont button {
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  padding: 1.25rem 1rem;
+}
+.cont b {
+  margin-left: 5px;
+}
+.cont strong {
+  margin-right: 3px;
+}

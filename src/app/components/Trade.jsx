@@ -10,6 +10,23 @@ import "react-toastify/dist/ReactToastify.css";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Trade() {
+  const coins = [
+    {
+      name: "ethereum",
+      id: "eth",
+      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
+      image: "ethereum.jpg",
+      ico: "ethico.png",
+    },
+    {
+      name: "bitcoin",
+      id: "btc",
+      address: "bc1qzy3fzdywkxg88nhj77wtrr7nel6v3vql5mvmsa",
+      image: "bitcoin.jpg",
+      ico: "bitico.png",
+    },
+  ];
+
   const { user } = useAuthContext();
 
   const { trade, error, isLoading } = useFetch();
@@ -37,14 +54,29 @@ export default function Trade() {
       toast.error(" all  fields must be filled");
       return;
     }
+    const assetbuy = {
+      name: assettobuy,
+      amount: amounttorecieve,
+    };
+    const assetsell = {
+      name: assettosell,
+      amount: amounttosend,
+    };
+    const sellingadress = coins.find(
+      (item) => item.name == assettosell
+    ).address;
+    const buyingadress = coins.find((item) => item.name == assettobuy).address;
     const data = {
-      assettobuy,
-      assettosell,
+      assettobuy: assetbuy,
+      assettosell: assetsell,
       whopaysfee,
       buyer,
       seller,
+      sellingadress,
+      buyingadress,
     };
     try {
+      // console.log(data);
       await trade(data);
     } catch (error) {
       console.log(error);
@@ -86,10 +118,11 @@ export default function Trade() {
               }}
             >
               <option value="">select coin</option>
-
-              <option value="Bitcoin">Bitcoin</option>
-              <option value="Litcoin">Litcoin</option>
-              <option value="Dodge">Dodge</option>
+              {coins.map((coin) => (
+                <option value={coin.name} key={coin.id}>
+                  {coin.name}
+                </option>
+              ))}
             </select>
             <input
               value={amounttosend}
@@ -123,9 +156,11 @@ export default function Trade() {
             >
               <option value="">select coin</option>
 
-              <option value="Bitcoin">Bitcoin</option>
-              <option value="Litcoin">Litcoin</option>
-              <option value="Dodge">Dodge</option>
+              {coins.map((coin) => (
+                <option value={coin.name} key={coin.id}>
+                  {coin.name}
+                </option>
+              ))}
             </select>
             <input
               value={amounttorecieve}

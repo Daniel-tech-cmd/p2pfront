@@ -463,9 +463,10 @@ const useFetch = () => {
     }
   }
 
-  async function jointrade(data) {
+  async function jointrade(data, user) {
     setError(null);
     setIsLoading(true);
+
     try {
       const response = await axios.patch(
         `${process.env.NEXT_PUBLIC_URL}/api/transact/jointrade/${user?._id}`,

@@ -6,12 +6,16 @@ import styles from "../styles/jointrade.module.css";
 import { openseccon } from "../contexts/openseccontext";
 import { useContext } from "react";
 import useFetch from "../hooks/useFetch";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function Jointrade() {
   const { toggle } = useContext(openseccon);
   const [code, setcode] = useState();
   const { jointrade, error, isLoading, responseData, checktrade, showfetch } =
     useFetch();
+  const data = useSelector((state) => state.cart);
+  const router = useRouter();
 
   const handlejointrade = async () => {
     if (code == "") {
@@ -25,6 +29,11 @@ export default function Jointrade() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handletrade = async () => {
+    router.push(`/account/trade?id=${code.toUpperCase()}`);
+    toggle();
   };
 
   return (
@@ -73,7 +82,8 @@ export default function Jointrade() {
                   color: "beige",
                 }}
               >
-                <b>Buying</b>:{responseData?.assettobuy}
+                <b>Buying</b>:{responseData?.assettobuy.amount}{" "}
+                {responseData?.assettobuy.name}
               </p>
               <p
                 style={{
@@ -98,7 +108,8 @@ export default function Jointrade() {
                   color: "beige",
                 }}
               >
-                <b>Selling</b>:{responseData?.assettosell}
+                <b>Selling</b>:{responseData?.assettosell?.amount}{" "}
+                {responseData?.assettosell.name}
               </p>
               <p
                 style={{
@@ -127,6 +138,7 @@ export default function Jointrade() {
                 fontFamily: "Jost",
                 cursor: "pointer",
               }}
+              onClick={handletrade}
             >
               Join trade
             </button>
