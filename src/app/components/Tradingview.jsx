@@ -1,17 +1,19 @@
 // TradingViewWidget.jsx
 "use client";
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, useRef, memo, useState } from "react";
 
 function Tradingview() {
   const container = useRef();
+  const [loaded, setloaded] = useState(false);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
-    script.type = "text/javascript";
-    script.async = true;
-    script.innerHTML = `
+    if (!loaded) {
+      const script = document.createElement("script");
+      script.src =
+        "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+      script.type = "text/javascript";
+      script.async = true;
+      script.innerHTML = `
         {
           "autosize": true,
           "symbol": "NASDAQ:AAPL",
@@ -25,8 +27,10 @@ function Tradingview() {
           "calendar": false,
           "support_host": "https://www.tradingview.com"
         }`;
-    container.current.appendChild(script);
-  }, []);
+      container.current.appendChild(script);
+      setloaded(true);
+    }
+  }, [loaded]);
 
   return (
     <div
@@ -44,7 +48,7 @@ function Tradingview() {
           rel="noopener nofollow"
           target="_blank"
         >
-          <span className="blue-text">Track all markets on TradingView</span>
+          {/* <span className="blue-text">Track all markets on TradingView</span> */}
         </a>
       </div>
     </div>
