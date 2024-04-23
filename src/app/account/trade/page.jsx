@@ -51,7 +51,7 @@ export default function page() {
             className="card"
             style={{
               height: "fit-content",
-              maxWidth: "850px",
+              maxWidth: "1000px",
               margin: "30px auto",
             }}
           >
@@ -151,7 +151,12 @@ export default function page() {
                 <p style={{ fontSize: "13px", fontWeight: "bold" }}>
                   Receiving Token:
                 </p>
-                <p style={{ fontSize: "13px" }}>9 KUB</p>
+                <p style={{ fontSize: "13px" }}>
+                  {" "}
+                  {data1?.username == responseData?.buyer
+                    ? `${responseData?.assettosell.amount} ${responseData?.assettosell.name}`
+                    : `${responseData?.assettobuy.amount} ${responseData?.assettobuy.name}`}
+                </p>
               </div>
               <div
                 style={{
@@ -160,9 +165,15 @@ export default function page() {
                   alignItems: "center",
                 }}
               >
-                <p style={{ fontSize: "13px", fontWeight: "bold" }}>Seller</p>
+                <p style={{ fontSize: "13px", fontWeight: "bold" }}>
+                  {data1?.username == responseData?.buyer ? `Seller` : `Buyer`}
+                </p>
 
-                <p style={{ fontSize: "13px" }}>k@g.com</p>
+                <p style={{ fontSize: "13px" }}>
+                  {data1?.username == responseData?.buyer
+                    ? `${responseData?.seller} `
+                    : `${responseData?.buyer} `}
+                </p>
               </div>
             </div>
             <hr style={{ borderColor: " #3A2D60", height: "1px" }} />

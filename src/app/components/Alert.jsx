@@ -14,7 +14,7 @@ export default function Alert() {
     <>
       <div className={`${styles2.model} `}>
         <div className={`${styles2.innermodel} ${styles.cont}`}>
-          <h5 style={{ color: "#fff" }}>Trade created </h5>
+          <h5 style={{ color: "#fff" }}> Successful </h5>
           <div
             style={{
               marginTop: "25px",

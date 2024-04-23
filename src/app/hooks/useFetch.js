@@ -491,8 +491,6 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        toast.success("Trade Found");
-        toast.success("Investment Request,succesful!");
       }
     } catch (error) {
       if (error?.message) {

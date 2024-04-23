@@ -10,14 +10,14 @@ const Login = () => {
         <div>
           <div className={styles.imgparent}>
             <div className={styles.logocont}>
-              <Image src={"/logo.png"} width={70} height={70} alt="logo" />
+              {/* <Image src={"/logo.png"} width={70} height={70} alt="logo" /> */}
             </div>
             <div className={styles.textcont}>
               <p>Welcome back!</p>
               <h2>Login to embrace the possibilities</h2>
             </div>
             <div className={styles.imgcont}>
-              <Image src={"/btc.png"} width={350} height={350} alt="img" />
+              <Image src={"/login.png"} width={700} height={350} alt="img" />
             </div>
           </div>
           <div className={styles.formcont}>

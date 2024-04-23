@@ -19,13 +19,8 @@ const Logincomp = () => {
 
   useEffect(() => {
     const generateRandomString = () => {
-      // Define the pool of characters (numbers and uppercase letters)
       const characters = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-      // Generate a random buffer of 6 bytes
       const randomBuffer = crypto.getRandomValues(new Uint8Array(6));
-
-      // Map the buffer to characters
       const generatedString = Array.from(randomBuffer)
         .map((byte) => characters[byte % characters.length])
         .join("");
@@ -36,10 +31,7 @@ const Logincomp = () => {
   }, []);
   const handlesubmit = async (e) => {
     e.preventDefault();
-    if (captcha !== randomString) {
-      toast.dismiss();
-      toast.error(" Capcha failed ");
-    } else if (password === "" || email === "") {
+    if (password === "" || email === "") {
       toast.error("All fields must be filled");
     } else {
       const data = {
@@ -60,6 +52,7 @@ const Logincomp = () => {
         onSubmit={(e) => {
           handlesubmit(e);
         }}
+        style={{ minHeight: "100vh" }}
       >
         <div>
           <h2>Sign In</h2>
@@ -120,15 +113,15 @@ const Logincomp = () => {
         {nopassword && (
           <span className={styles.error}>Password is required</span>
         )}
-        <div className={styles.capcha}>
+        {/* <div className={styles.capcha}>
           <span className={styles.a}>{randomString[0]}</span>
           <span className={styles.b}>{randomString[1]}</span>
           <span className={styles.c}>{randomString[2]}</span>
           <span className={styles.d}>{randomString[3]}</span>
           <span className={styles.e}>{randomString[4]}</span>
           <span className={styles.f}>{randomString[5]}</span>
-        </div>
-        <label>
+        </div> */}
+        {/* <label>
           Captcha
           <span
             style={{ color: "red" }}
@@ -144,7 +137,7 @@ const Logincomp = () => {
           onChange={(e) => {
             setcaptcha(e.target.value);
           }}
-        />
+        /> */}
         <button className={styles.submit}>
           {isLoading ? "On it..." : "Sign In"}
         </button>

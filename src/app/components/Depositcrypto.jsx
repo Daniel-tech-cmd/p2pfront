@@ -28,6 +28,62 @@ export default function Depositcrypto() {
       image: "bitcoin.jpg",
       ico: "bitico.png",
     },
+    {
+      name: "bnb smart chain",
+      id: "bnb smart chain",
+      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
+      image: "bnb-smart-chain.jpg",
+      ico: "bnbsmartico.png",
+    },
+    {
+      name: "bnb beacon chain",
+      id: "bnb beacon chain",
+      address: "bnb1tjwj6jcqhmmj0487thccva2nu7hwnkd5vt2ja8",
+      image: "bnb-beacon-chain.jpg",
+      ico: "bnbbeaconico.png",
+    },
+    {
+      name: "BCH",
+      id: "bch",
+      address: "qqvva8fugqha98tylyvhswk0vtd2ua0mrslzrwuzat",
+      image: "bch.jpg",
+      ico: "bchico.png",
+    },
+    {
+      name: "Litcoin",
+      id: "LTC",
+      address: "ltc1qtsge9h4etq86hglvte8563avtlg5f4k9kk6e5s",
+      image: "litcoin.jpg",
+      ico: "litcoinico.png",
+    },
+    {
+      name: "Doge",
+      id: "doge",
+      address: "DLWE8f35AAKLrqYqzaZcx7nCTAcoDnSWGf",
+      image: "doge.jpg",
+      ico: "dogeico.png",
+    },
+    {
+      name: "Xrp",
+      id: "xrp",
+      address: "r9h5gyw9Jk3H9k2WCbBrHDX6o4NaK4DUov",
+      image: "xrp.jpg",
+      ico: "xrpi.png",
+    },
+    {
+      name: "Kcs",
+      id: "kcs",
+      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
+      image: "kcs.jpg",
+      ico: "kcsico.png",
+    },
+    {
+      name: "Matic",
+      id: "matic",
+      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
+      image: "matic.jpg",
+      ico: "maticico.png",
+    },
   ];
   const [selectedcoin, setselectedcoin] = useState(coins[0]);
 
@@ -40,7 +96,6 @@ export default function Depositcrypto() {
       toast.warning("Bank wire option is currently not available");
     } else {
       try {
-        console.log(amount);
         const data = {
           amount: amount,
           asset: selectedcoin.name,
@@ -77,6 +132,7 @@ export default function Depositcrypto() {
                 width={50}
                 height={50}
                 alt=""
+                style={{ objectFit: "contain" }}
               />
               <h3>{amount.toFixed(2)}</h3>
             </div>
@@ -99,8 +155,13 @@ export default function Depositcrypto() {
                 }}
                 style={{ textTransform: "capitalize", fontFamily: "Jost" }}
               >
+                <option value={""}> select coin</option>
                 {coins.map((coi) => (
-                  <option key={coi.id} value={coi.name}>
+                  <option
+                    key={coi.id}
+                    value={coi.name}
+                    style={{ padding: "20px 0" }}
+                  >
                     {coi.name}
                   </option>
                 ))}

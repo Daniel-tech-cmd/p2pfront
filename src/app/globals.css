@@ -72,6 +72,10 @@ p {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+input {
+  font-family: "jost", Arial, Helvetica, sans-serif;
+  text-transform: none !important;
+}
 .icon1 {
   top: -30px;
   left: 60px;
