@@ -6,89 +6,20 @@ import Image from "next/image";
 import { openseccon } from "../contexts/openseccontext";
 import { useContext } from "react";
 import useFetch from "../hooks/useFetch";
+import { useSelector } from "react-redux";
 
 export default function Depositcrypto() {
   const [amount, setamonunt] = useState(0);
   const { toggledepo } = useContext(openseccon);
   const [second, setsecond] = useState(false);
   const { depositfun, error, isLoading } = useFetch();
+  const coins = useSelector((state) => state.cart.coins[0]);
 
-  const coins = [
-    {
-      name: "ethereum",
-      id: "eth",
-      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
-      image: "ethereum.jpg",
-      ico: "ethico.png",
-    },
-    {
-      name: "bitcoin",
-      id: "btc",
-      address: "bc1qzy3fzdywkxg88nhj77wtrr7nel6v3vql5mvmsa",
-      image: "bitcoin.jpg",
-      ico: "bitico.png",
-    },
-    {
-      name: "bnb smart chain",
-      id: "bnb smart chain",
-      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
-      image: "bnb-smart-chain.jpg",
-      ico: "bnbsmartico.png",
-    },
-    {
-      name: "bnb beacon chain",
-      id: "bnb beacon chain",
-      address: "bnb1tjwj6jcqhmmj0487thccva2nu7hwnkd5vt2ja8",
-      image: "bnb-beacon-chain.jpg",
-      ico: "bnbbeaconico.png",
-    },
-    {
-      name: "BCH",
-      id: "bch",
-      address: "qqvva8fugqha98tylyvhswk0vtd2ua0mrslzrwuzat",
-      image: "bch.jpg",
-      ico: "bchico.png",
-    },
-    {
-      name: "Litcoin",
-      id: "LTC",
-      address: "ltc1qtsge9h4etq86hglvte8563avtlg5f4k9kk6e5s",
-      image: "litcoin.jpg",
-      ico: "litcoinico.png",
-    },
-    {
-      name: "Doge",
-      id: "doge",
-      address: "DLWE8f35AAKLrqYqzaZcx7nCTAcoDnSWGf",
-      image: "doge.jpg",
-      ico: "dogeico.png",
-    },
-    {
-      name: "Xrp",
-      id: "xrp",
-      address: "r9h5gyw9Jk3H9k2WCbBrHDX6o4NaK4DUov",
-      image: "xrp.jpg",
-      ico: "xrpi.png",
-    },
-    {
-      name: "Kcs",
-      id: "kcs",
-      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
-      image: "kcs.jpg",
-      ico: "kcsico.png",
-    },
-    {
-      name: "Matic",
-      id: "matic",
-      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
-      image: "matic.jpg",
-      ico: "maticico.png",
-    },
-  ];
   const [selectedcoin, setselectedcoin] = useState(coins[0]);
 
   const hnadledeposit = async (e) => {
     e.preventDefault();
+    console.log(coins2);
     // toast.dismiss();
     if (selectedcoin == "" || amount == "") {
       return;
@@ -128,7 +59,7 @@ export default function Depositcrypto() {
             </div>
             <div>
               <Image
-                src={`/${selectedcoin.ico}`}
+                src={`${selectedcoin?.ico.url}`}
                 width={50}
                 height={50}
                 alt=""
@@ -226,7 +157,7 @@ export default function Depositcrypto() {
             </div>
             <div>
               <Image
-                src={`/${selectedcoin.image}`}
+                src={`${selectedcoin?.image.url}`}
                 width={160}
                 height={160}
                 alt=""

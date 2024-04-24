@@ -100,6 +100,12 @@ const Sidenav = () => {
                   </span>
                   Trades
                 </Link>
+                <Link className={styles.link} href={`/admin/add-wallet`}>
+                  <span className="material-symbols-outlined notranslate">
+                    admin_panel_settings
+                  </span>
+                  Add wallet
+                </Link>
               </>
             )}
           </div>

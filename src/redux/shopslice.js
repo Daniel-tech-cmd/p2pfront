@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 const initialState = {
   user: {},
+  coins: [],
 };
 
 export const cartSlice = createSlice({
@@ -12,7 +13,9 @@ export const cartSlice = createSlice({
   reducers: {
     createuser: (state, action) => {
       state.user = action.payload;
-      console.log(state);
+    },
+    addcoin: (state, action) => {
+      state.coins.push(action.payload);
     },
     conso: (state, action) => {
       console.log(state);
@@ -20,5 +23,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { createuser, conso } = cartSlice.actions;
+export const { createuser, conso, addcoin } = cartSlice.actions;
 export default cartSlice.reducer;

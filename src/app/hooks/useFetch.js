@@ -222,50 +222,53 @@ const useFetch = () => {
       }
     }
   }
-  async function transfer(data) {
+  async function addwalet(data) {
     setError(null);
     setIsLoading(true);
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_URL}/api/user/transfer/${user?._id}`,
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_URL}/api/wallet/createwallet/${user?._id}`,
+        data,
         {
-          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user?.token}`,
           },
-          body: JSON.stringify(data),
         }
       );
 
-      if (!response.ok) {
-        try {
-          console.log("error");
-          // Try to parse the response body as JSON
-          const errorData = await response.json();
-
-          // If successful, extract and display the error message
-          if (errorData && errorData.message) {
-            setError(`Transfer error: ${errorData.message}`);
-          } else {
-            // If the response body is not valid JSON or doesn't contain a message, use a generic error message
-            setError("Transfer error: Something went wrong");
-          }
-        } catch (error) {
-          // If there's an error parsing the JSON, use a generic error message
-          setError("Transfer error: Something went wrong");
-        }
-      }
-      if (response.ok) {
-        setResponseData(response);
+      if (response.status !== 200) {
         setIsLoading(false);
+        setError(response.data.error);
+      }
+
+      if (response.status === 200) {
+        setResponseData(response.data);
+        setIsLoading(false);
+        toast.success("Updated");
       }
 
       // Handle successful response here, e.g., show a success message
     } catch (error) {
-      // Handle error here, e.g., display an error message or log the error
-      console.error(error.message);
-      setError(error.message);
+      if (error?.message) {
+        if (error.message.includes("ENOTFOUND")) {
+          setError("Network error");
+          toast.error("Network error");
+        } else {
+          setError(error.message);
+          setIsLoading(false);
+        }
+      }
+      if (error?.response?.data.error) {
+        if (error.response?.data.error.includes("ENOTFOUND")) {
+          setError("Network error");
+          toast.error("Network error");
+        } else {
+          setError(error.response.data.error);
+          setIsLoading(false);
+          toast.error(error.response.data.error);
+        }
+      }
     }
   }
 
@@ -596,13 +599,13 @@ const useFetch = () => {
     trade,
     deleteData,
     change,
+    addwalet,
     forgot,
     isLoading,
     updatePost,
     depositfun,
     invest,
     checktrade,
-    transfer,
     showfetch,
     jointrade,
   };
