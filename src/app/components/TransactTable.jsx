@@ -1,12 +1,6 @@
-import Image from "next/image";
-import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 
 const TransactTable = ({ data }) => {
-  const formattedDate = (date) => {
-    return formatDistanceToNow(new Date(date), { addSuffix: true });
-  };
-
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     const date = new Date(dateString);
