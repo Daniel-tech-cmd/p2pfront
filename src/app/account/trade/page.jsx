@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import Welcomemsg from "@/app/components/Welcomemsg";
 
 export default function page() {
-  const { jointrade, responseData, error } = useFetch();
+  const { jointrade, responseData, error, isLoading } = useFetch();
   const router = useSearchParams();
   const id = router.get("id");
 
@@ -24,7 +24,6 @@ export default function page() {
     const data = { id: id };
     try {
       await jointrade(data, data1.user);
-      console.log(responseData);
     } catch (error) {
       console.log(error);
       return notFound();

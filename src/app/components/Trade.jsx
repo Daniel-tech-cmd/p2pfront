@@ -213,7 +213,9 @@ export default function Trade() {
             <option value="Buyer">Buyer</option>
             <option value="Seller">Seller</option>
           </select>
-          <button>Publish Trade</button>
+          <button disabled={isLoading}>
+            {isLoading ? "loading..." : "Publish Trade"}
+          </button>
         </div>
       </form>
       {error && (

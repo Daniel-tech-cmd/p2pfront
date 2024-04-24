@@ -9,7 +9,7 @@ export default function BScard() {
       <div>
         <h4>Buy & Sell 100+ Coins Instantly</h4>
         <p>Begin trading now!!</p>
-        <Link href="#" className="dashbtn">
+        <Link href={`/new-trade`} className="dashbtn">
           Start a trade
         </Link>
       </div>
