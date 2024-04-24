@@ -23,7 +23,7 @@
   margin: 0;
 }
 .link {
-  border: 1px solid hsl(var(--border) / 0.3);
+  border: none !important;
   border-radius: 6px;
   color: hsl(var(--border) / 0.5);
   padding: 14px;
