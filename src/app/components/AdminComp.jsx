@@ -207,11 +207,7 @@ const AdminComp = ({ data, data2, sec }) => {
               }}
             >
               {dat?.email && <span>{dat?.email}</span>}
-              {dat?.startedby ? (
-                <span>{dat?.startedby}</span>
-              ) : (
-                <span>{dat?.id}</span>
-              )}
+              {dat?.id && <span>{dat?.id}</span>}
               <span
                 style={{ color: "hsl(var(--danger))" }}
                 className="material-symbols-outlined notranslate"

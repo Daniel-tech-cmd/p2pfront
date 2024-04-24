@@ -6,16 +6,30 @@ import Trade from "../components/Trade";
 import Jointrade from "../components/Jointrade";
 import TransactTable from "../components/TransactTable";
 
-export default function page() {
-  const data = [
-    {
-      text: "deposit of 7000",
-      type: "deposit",
-      date: "2024-02-26T20:01:45.642+00:00",
-      status: "pending",
-      _id: "65dcee29cbc18fd426433b81",
-    },
-  ];
+import { cookies } from "next/headers";
+
+async function getdatabyId(id) {
+  const res = await fetch(`${process.env.URL}/api/user/gettrades/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return notFound();
+  }
+
+  const data = await res.json();
+
+  return data;
+}
+
+export default async function page() {
+  const cookiestore = cookies();
+  const userjson = cookiestore.get("user");
+
+  const user = JSON.parse(userjson?.value);
+
+  const data = getdatabyId(user._id);
+  const [dat] = await Promise.all([data]);
+
   return (
     <section className={styles.sec}>
       <div>
@@ -59,7 +73,7 @@ export default function page() {
             margin: "30px auto",
           }}
         >
-          <TransactTable data={data} />
+          <TransactTable data={dat} />
         </div>
       </div>
     </section>
