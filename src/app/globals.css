@@ -26,6 +26,31 @@ p {
   --bg: #15073a;
   --headerbg: #25164f;
   --navback: #3a2d60;
+  --border: 0 0% 100%;
+  --danger: 0 96% 63%;
+  --success: 115 99% 30%;
+}
+.dashbtn {
+  border: none;
+  font-family: "Jost", Arial, Helvetica, sans-serif;
+}
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+.table th {
+  border-bottom: 0.0625rem solid #eeee !important;
+  text-transform: capitalize !important;
+  font-size: 1rem !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+  padding: 0.9375rem 0.625rem !important;
 }
 .logo {
   font-weight: 800;
@@ -150,7 +175,7 @@ input {
   border-spacing: 0px 0px;
   font-size: 0.9375rem;
   width: 100%;
-  min-width: 600px;
+  min-width: 500px;
   overflow: auto;
 }
 .table > thead {
@@ -205,8 +230,20 @@ th {
   text-transform: capitalize;
   vertical-align: middle;
   /* display: flex; */
-  border-color: #eeee;
   white-space: nowrap;
+  border-color: #3a2d60 !important;
+  vertical-align: middle;
+  padding: 0.9375rem 0.625rem !important;
+  border-bottom-width: 1px;
+}
+.table a {
+  text-decoration: none;
+  color: #fff;
+}
+.table tbody tr:hover {
+  background-color: #15073a;
+  box-shadow: 0 0rem 1.875rem rgba(149, 104, 255, 0.2);
+  cursor: pointer;
 }
 tbody span {
   font-size: 12px;
@@ -219,6 +256,14 @@ tbody small {
 }
 .table tbody tr:last-child {
   border-bottom: 0;
+}
+.tabc::-webkit-scrollbar-thumb {
+  background-color: #06f;
+  outline: 1px solid #06f;
+}
+.tabc::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
 }
 @keyframes float {
   0% {

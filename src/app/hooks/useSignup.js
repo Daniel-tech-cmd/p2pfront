@@ -105,9 +105,10 @@ const useSignup = () => {
           payload: response.data,
         });
         Cookies.set("user", JSON.stringify(response.data));
+        distp(createuser(response.data));
         setIsLoading(false);
         toast.success("Login successful!");
-        router.push(`/account/dashboard/${response?.data._id}`);
+        router.push(`/account/dashboard/`);
       }
       if (response.status === 201) {
         setIsLoading(false);

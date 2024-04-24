@@ -74,6 +74,7 @@ export default function Trade() {
       seller,
       sellingadress,
       buyingadress,
+      startedby: user.email,
     };
     try {
       // console.log(data);

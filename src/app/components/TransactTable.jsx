@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 const TransactTable = ({ data }) => {
   const formattedDate = (date) => {
@@ -14,14 +15,15 @@ const TransactTable = ({ data }) => {
 
   return (
     <>
+      <h2 style={{ color: "#fff", fontWeight: "500" }}>Trade History</h2>
       <div style={{ overflow: "auto", maxHeight: "400px" }} className="tabc">
         <table className="table">
           <thead>
             <tr>
-              <th>Type</th>
+              <th>Pair</th>
               <th>Initiated</th>
-              <th>Text</th>
-              <th>Status</th>
+              <th>Buyer</th>
+              <th>#ID </th>
             </tr>
           </thead>
           <tbody>
@@ -29,39 +31,49 @@ const TransactTable = ({ data }) => {
               ?.slice()
               .reverse()
               .map((tran) => (
-                <tr key={tran._id}>
+                <tr key={tran?._id}>
                   <td data-label="Type">
-                    <div className="text-end text-lg-start">
-                      <span></span>
-                      <br />
-                      <small style={{ textTransform: "capitalize" }}>
-                        {tran.type}
-                      </small>
-                    </div>
+                    <Link href={`/account/trade?id=${tran?.id}`}>
+                      <div className="text-end text-lg-start">
+                        <p
+                          style={{
+                            textTransform: "capitalize",
+                            color: "#fff",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          {tran?.assettobuy?.name}/{tran?.assettosell?.name}
+                        </p>
+                      </div>
+                    </Link>
                   </td>
 
                   <td data-label="Initiated">
-                    <div className="text-end text-lg-start fw-normal">
-                      <span>{formatDate(tran.date)}</span>
-                      <br />
-                      <small>{formattedDate(tran.date)}</small>
-                    </div>
+                    <Link href={`/account/trade?id=${tran?.id}`}>
+                      <div className="text-end text-lg-start fw-normal">
+                        <span>{formatDate(tran?.createdAt)}</span>
+                      </div>
+                    </Link>
                   </td>
+
+                  <td data-label="Initiated">
+                    <Link href={`/account/trade?id=${tran?.id}`}>
+                      <div className="text-end text-lg-start fw-normal">
+                        <span>
+                          {tran?.buyer == "" ? "pending" : tran?.buyer}
+                        </span>
+                      </div>
+                    </Link>
+                  </td>
+
                   <td data-label="Text">
-                    <div className="text-end text-lg-start fw-normal">
-                      {tran.text}
-                      <br />
-                      <span title="Text" style={{ fontSize: "10px" }}>
-                        {tran.text} USD
-                      </span>
-                    </div>
-                  </td>
-                  <td className="text-center" data-label="Status">
-                    <div className="text-end text-lg-start">
-                      <span className={`badge  ${tran.status}`}>
-                        {tran.status}
-                      </span>{" "}
-                    </div>
+                    <Link href={`/account/trade?id=${tran?.id}`}>
+                      <div className="text-end text-lg-start fw-normal">
+                        <span title="Text" style={{ fontSize: "10px" }}>
+                          {tran?.id}
+                        </span>
+                      </div>
+                    </Link>
                   </td>
                 </tr>
               ))}

@@ -6,11 +6,12 @@ import Hamburg from "./hamburg";
 import { useContext } from "react";
 import { openseccon } from "../contexts/openseccontext";
 import { navcon } from "../contexts/navcon";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Sidenav = () => {
   const { show, toggle, toggledepo, togglewith } = useContext(openseccon);
+  const { user: dat } = useAuthContext();
   const { toggle: tog } = useContext(navcon);
-  const dat = { _id: 343 };
   return (
     <>
       <section className={styles.sec}>
@@ -27,10 +28,7 @@ const Sidenav = () => {
             />
           </div>
           <div className={styles.links}>
-            <Link
-              className={styles.link}
-              href={`/account/dashboard/${dat?._id}`}
-            >
+            <Link className={styles.link} href={`/account/dashboard/`}>
               <span className="material-symbols-outlined notranslate">
                 dashboard
               </span>
@@ -75,20 +73,34 @@ const Sidenav = () => {
               </span>
               Withdraw crypto
             </Link>
-            <Link className={styles.link} href={"#"}>
+            <Link className={styles.link} href={`/account/trades`}>
+              <span className="material-symbols-outlined notranslate">
+                crowdsource
+              </span>
+              View trades
+            </Link>
+            {/* <Link className={styles.link} href={"#"}>
               <span className="material-symbols-outlined notranslate">
                 security
               </span>
               security
-            </Link>
+            </Link> */}
             {/* <Logout /> */}
             {dat?.role === "admin" && (
-              <Link className={styles.link} href={`/admin/${dat?._id}`}>
-                <span className="material-symbols-outlined notranslate">
-                  admin_panel_settings
-                </span>
-                Admin Dashboard
-              </Link>
+              <>
+                <Link className={styles.link} href={`/admin/`}>
+                  <span className="material-symbols-outlined notranslate">
+                    admin_panel_settings
+                  </span>
+                  Users
+                </Link>
+                <Link className={styles.link} href={`/admin/trades`}>
+                  <span className="material-symbols-outlined notranslate">
+                    admin_panel_settings
+                  </span>
+                  Trades
+                </Link>
+              </>
             )}
           </div>
         </div>

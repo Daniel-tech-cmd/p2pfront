@@ -1,20 +1,41 @@
 import React from "react";
 import Sidenav from "@/app/components/Sidenav";
 import Name from "@/app/components/Name";
-import styles from "../../../styles/invest.module.css";
+import styles from "../../styles/invest.module.css";
 import BScard from "@/app/components/B&Scard";
 import Link from "next/link";
 import Trade from "@/app/components/Trade";
 import TradingViewWidget from "@/app/components/Tradingview";
+import { cookies } from "next/headers";
 
-export default function page() {
+async function getdatabyId(id) {
+  const res = await fetch(`${process.env.URL}/api/user/oneuser/${id}`, {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return notFound();
+  }
+
+  const data = await res.json();
+
+  return data;
+}
+
+export default async function page() {
+  const cookiestore = cookies();
+  const userjson = cookiestore.get("user");
+
+  const user = JSON.parse(userjson?.value);
+
+  const data = getdatabyId(user._id);
+  const [dat] = await Promise.all([data]);
   return (
     <section className={styles.sec}>
       <div>
         <Sidenav />
       </div>
       <div className={styles.seconddiv}>
-        <Name data={{ _id: 390, username: "jkd" }} section={"Dashboard"} />
+        <Name data={dat} section={"Dashboard"} />
         <div className={styles.containerFluid}>
           <div className={styles.row} style={{ height: "fit-content" }}>
             <BScard />
@@ -52,9 +73,11 @@ export default function page() {
                   <p
                     style={{ fontSize: "22px", color: "#fff", margin: "5px 0" }}
                   >
-                    0.00
+                    {dat?.assets != "" ? dat?.assets[0].amount : "0.00"}
                   </p>
-                  <p style={{ fontSize: "12px", margin: "5px 0" }}>BTC</p>
+                  <p style={{ fontSize: "12px", margin: "5px 0" }}>
+                    {dat?.assets != "" ? dat?.assets[0].name : "BTC"}
+                  </p>
                 </div>
                 <Link
                   href="#"

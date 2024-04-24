@@ -67,11 +67,14 @@ export default function page() {
               <div style={{ display: "flex", alignItems: "center" }}>
                 <Image src="/poly.png" width={30} height={30} alt="" />
                 <p style={{ color: "white", padding: "0 10px" }}>
-                  <b>KuB/SHIB</b>
+                  <b>
+                    {responseData?.assettobuy?.name}/
+                    {responseData?.assettosell?.name}
+                  </b>
                 </p>
               </div>
               <div style={{ color: "white" }}>
-                <p>#TNFKDG</p>
+                <p>{responseData?.id}</p>
               </div>
             </div>
             <Welcomemsg />
@@ -153,7 +156,7 @@ export default function page() {
                 </p>
                 <p style={{ fontSize: "13px" }}>
                   {" "}
-                  {data1?.username == responseData?.buyer
+                  {data1?.user.username == responseData?.buyer
                     ? `${responseData?.assettosell.amount} ${responseData?.assettosell.name}`
                     : `${responseData?.assettobuy.amount} ${responseData?.assettobuy.name}`}
                 </p>
@@ -166,11 +169,13 @@ export default function page() {
                 }}
               >
                 <p style={{ fontSize: "13px", fontWeight: "bold" }}>
-                  {data1?.username == responseData?.buyer ? `Seller` : `Buyer`}
+                  {data1?.user.username == responseData?.buyer
+                    ? `Seller`
+                    : `Buyer`}
                 </p>
 
                 <p style={{ fontSize: "13px" }}>
-                  {data1?.username == responseData?.buyer
+                  {data1?.user.username == responseData?.buyer
                     ? `${responseData?.seller} `
                     : `${responseData?.buyer} `}
                 </p>

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import useSignup from "../hooks/useSignup";
 import { ToastContainer, toast } from "react-toastify";
 import Hamburg from "./hamburg";
-const Name = ({ data, section }) => {
+const Name = ({ section }) => {
   const [showprofie, setshowprofile] = useState(false);
   // const { logout } = useSignup();
   const handleCopyClick = (address) => {
