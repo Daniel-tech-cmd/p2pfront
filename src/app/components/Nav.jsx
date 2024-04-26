@@ -62,12 +62,12 @@ const Nav = () => {
               </Link>
             </div>
             <div className={styles.contactSec}>
-              <Link href={"#"}>
+              {/* <Link href={"#"}>
                 <span className="material-symbols-outlined icon notranslate">
                   mail
                 </span>
                 <span>support@fitstock.org</span>
-              </Link>
+              </Link> */}
               {/* <Link href={"#"}>
                 <span className="material-symbols-outlined icon notranslate">
                   call
