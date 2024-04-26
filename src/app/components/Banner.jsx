@@ -11,7 +11,7 @@ export default function Banner() {
           Ligntening fast trades
         </div>
         <div>
-          <h1>Buy, Sell & Swap crypto easily</h1>
+          <h1> Swap crypto easily</h1>
         </div>
         <div>
           <p>

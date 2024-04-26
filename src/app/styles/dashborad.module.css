@@ -1,0 +1,20 @@
+.sec {
+  background: var(--bg);
+  display: flex;
+  justify-content: flex-end;
+}
+.sec > div {
+  margin: 0;
+}
+.seconddiv {
+  max-width: calc(100vw - 300px);
+  width: 100%;
+}
+@media (max-width: 1300px) {
+  .seconddiv {
+    max-width: 100%;
+  }
+  .deposec {
+    padding: 0 !important;
+  }
+}

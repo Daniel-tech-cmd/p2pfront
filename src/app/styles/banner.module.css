@@ -8,7 +8,7 @@
 }
 .images_cont {
   position: relative;
-  z-index: 999;
+  z-index: 100;
   max-width: fit-content;
   margin: auto;
 }
@@ -18,7 +18,7 @@
 }
 .img_bg {
   object-fit: contain;
-  z-index: 999;
+  z-index: 100;
   position: relative;
 }
 .strike {

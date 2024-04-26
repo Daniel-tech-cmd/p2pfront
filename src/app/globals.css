@@ -277,6 +277,10 @@ tbody small {
   }
 }
 @media (max-width: 1020px) {
+  .logo a {
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+  }
   .dont .dashboardnav_sec__t_v5x {
     display: none !important;
   }
@@ -284,7 +288,8 @@ tbody small {
     display: block !important;
   }
   .logo {
-    display: none;
+    /* display: none; */
+    margin: 0 5px;
   }
 }
 @media (max-width: 758px) {
