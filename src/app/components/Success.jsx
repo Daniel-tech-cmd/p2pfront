@@ -34,7 +34,7 @@ export default function Success() {
             className={styles.good}
           ></div>
           <Link
-            href={`/account/dashboard/${user._id}`}
+            href={`/account/dashboard/`}
             className={styles.link}
             onClick={togglesucces}
           >
