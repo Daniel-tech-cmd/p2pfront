@@ -2,6 +2,7 @@
 import React from "react";
 import styles from "../styles/signup.module.css";
 import { useState } from "react";
+import Link from "next/link";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import useSignup from "../hooks/useSignup";
@@ -75,6 +76,15 @@ export default function Signupcomp() {
               {isLoading ? "Loading..." : "Sign up"}
             </button>
           </div>
+          <small>
+            Already have an account?{" "}
+            <Link
+              style={{ textDecoration: "none", color: "blue" }}
+              href={"/user/login"}
+            >
+              Log in
+            </Link>
+          </small>
         </form>
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
       </div>
