@@ -97,9 +97,9 @@ const Logincomp = () => {
               asterisk
             </span>
           </label>
-          <Link style={{ textDecoration: "none" }} href={"/forgot-password"}>
+          {/* <Link style={{ textDecoration: "none" }} href={"/forgot-password"}>
             Forgot Password?
-          </Link>
+          </Link> */}
         </div>
 
         <input

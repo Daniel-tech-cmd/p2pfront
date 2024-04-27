@@ -23,6 +23,7 @@ p {
   --menu: #212529;
   --green: #4cca8d;
   --orange: #fa4f09;
+  --base: ;
   --bg: #15073a;
   --headerbg: #25164f;
   --navback: #3a2d60;
@@ -264,6 +265,19 @@ tbody small {
 .tabc::-webkit-scrollbar {
   width: 4px;
   height: 2px;
+}
+.inputtxt2 {
+  border-radius: 6px;
+  font-weight: 400;
+  outline: none;
+  padding: 15px;
+  background-color: transparent;
+  border: 1px solid hsl(0 0% 100% / 0.14);
+  color: #93989f;
+  line-height: 1;
+  min-width: 200px;
+  margin: 0;
+  width: 100%;
 }
 @keyframes float {
   0% {

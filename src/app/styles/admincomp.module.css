@@ -27,6 +27,8 @@
 @media (max-width: 800px) {
   .div2 {
     flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: auto 20px !important;
   }
   .div2 form div > div {
     width: 100%;
