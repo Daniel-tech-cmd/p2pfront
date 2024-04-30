@@ -19,8 +19,6 @@ export default function Depositcrypto() {
 
   const hnadledeposit = async (e) => {
     e.preventDefault();
-    console.log(coins2);
-    // toast.dismiss();
     if (selectedcoin == "" || amount == "") {
       return;
     } else if (selectedcoin.name === "bank wire") {

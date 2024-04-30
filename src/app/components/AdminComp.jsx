@@ -8,7 +8,7 @@ import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 // import Hamburg from "./hamburg";
-const AdminComp = ({ data, data2, sec }) => {
+const AdminComp = ({ data, data2, sec, link }) => {
   const [openinves, setopeninvest] = useState(false);
   const [error, setError] = useState("");
   const [response, setResponseData] = useState("");
@@ -195,7 +195,11 @@ const AdminComp = ({ data, data2, sec }) => {
           {data[0].map((dat) => (
             <Link
               key={dat._id}
-              href={`/edit?query=${dat._id}`}
+              href={
+                link == "edit/trade"
+                  ? `/${link}?query=${dat.id}`
+                  : `/${link}?query=${dat._id}`
+              }
               className="card"
               style={{
                 color: "hsl(var(--border) / 0.7)",

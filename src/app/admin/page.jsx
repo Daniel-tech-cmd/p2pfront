@@ -58,7 +58,7 @@ const Admin = async () => {
             className={styles.containerFluid}
             style={{ padding: "15px" }}
           >
-            <AdminComp data={datium} data2={dat} sec={"Users"} />
+            <AdminComp data={datium} data2={dat} sec={"Users"} link={"edit"} />
           </div>
         </div>
       </section>

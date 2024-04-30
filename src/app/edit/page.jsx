@@ -6,6 +6,7 @@ import Name from "../components/Name";
 import styles from "../styles/create.module.css";
 import styles2 from "../styles/dashborad.module.css";
 import styles3 from "../styles/invest.module.css";
+import styles4 from "../styles/jointrade.module.css";
 import Sidenav from "../components/Sidenav";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -17,18 +18,21 @@ const Edit = () => {
   const query = router.get("query");
 
   const [res, setres] = useState("");
+  const [showedit, setshowedit] = useState(false);
   const [admin, setadmin] = useState("");
+  const [nametoedit, setnametoedit] = useState("");
+  const [amounttoedit, setamounttoedit] = useState("");
+
   useEffect(() => {
-    // const user = JSON.parse(localStorage.getItem("user"));
     if (query) {
       handlefetch(query);
-      // handleadmin(user._id);
     }
   }, [query]);
+
   const [username, setusername] = useState(res.username);
   const [email, setemail] = useState(res.email);
   const [role, setrole] = useState(res.role);
-  const [plan, setplan] = useState(res?.plan);
+  const [assets, setassets] = useState(res.assets);
   const [card, setcard] = useState(res?.card);
   const [err, setError] = useState(null);
   const [balance, setbalance] = useState(res.balance);
@@ -36,7 +40,6 @@ const Edit = () => {
   const [country, setcountry] = useState(res.country);
   const [profit, setprofit] = useState(res.profit);
   const [verified, setverified] = useState(res.verified);
-
   const [minimumWithdrawal, setminwith] = useState(res?.minimumWithdrawal);
 
   const handlefetch = async (searchkeyword) => {
@@ -53,11 +56,11 @@ const Edit = () => {
       setprofit(data.profit);
       setemail(data.email);
       setrole(data.role);
-      setplan(data.plan);
       setcard(data.card);
       setbalance(data.balance);
       setnumber(data.number);
       setcountry(data.country);
+      setassets(data.assets);
       setprofit(data.profit);
       setverified(data.verified);
       setminwith(data.minimumWithdrawal);
@@ -65,6 +68,29 @@ const Edit = () => {
       console.log(error);
     }
   };
+
+  const updateObjectByName = (newData) => {
+    const index = array.findIndex((obj) => obj.name === name);
+    let amount = newData;
+    if (index !== -1) {
+      array[index] = { ...array[index] };
+    }
+    return array;
+  };
+
+  const handleeditdata = () => {
+    const index = assets.findIndex((obj) => obj.name === nametoedit);
+    // let amount = newData;
+    if (index !== -1) {
+      // assets[index] = { ...array[index], ...amount };
+      // const obj = ass
+      // const aset =
+      assets[index].amount = amounttoedit;
+    }
+    setassets(assets);
+    setshowedit(false);
+  };
+
   const handleadmin = async (searchkeyword) => {
     try {
       const encodeQuery = encodeURIComponent(searchkeyword.trim());
@@ -85,29 +111,21 @@ const Edit = () => {
   const handleSubmit = async (e) => {
     setError(null);
     e.preventDefault();
-    if (
-      username === "" ||
-      number === "" ||
-      country === "" ||
-      balance === "" ||
-      profit === "" ||
-      role === "" ||
-      email === ""
-    ) {
+    if (username === "" || role === "" || email === "") {
       setError("All fields must be filled!");
       toast.error("All fields must be filled!");
     } else {
       const data = {
         username: username.trim(),
         number,
-        country: country.trim(),
+        country: country?.trim(),
         balance,
         profit,
-        role: role.trim(),
-        email: email.trim(),
-        minimumWithdrawal: minimumWithdrawal,
+        role: role?.trim(),
+        email: email?.trim(),
         // verified: verified.trim(),
         verified,
+        assets,
       };
       try {
         // console.log(data)
@@ -171,7 +189,7 @@ const Edit = () => {
                       <div className={styles.createCont}>
                         <div>
                           <Image
-                            src="/profile.png"
+                            src="/profile.webp"
                             width={100}
                             height={100}
                             alt=""
@@ -257,47 +275,6 @@ const Edit = () => {
                             value={number}
                             onChange={(e) => setnumber(e.target.value)}
                           />
-                          {plan && (
-                            <>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  padding: "0px 20px",
-                                  fontWeight: "bold",
-                                  fontStyle: "italic",
-                                }}
-                              >
-                                current plan:
-                              </label>
-                              <input
-                                placeholder="current plan"
-                                className={`${styles.blogAuthor} ${styles.input}`}
-                                value={plan}
-                                onChange={(e) => setplan(e.target.value)}
-                              />
-                            </>
-                          )}
-                          {card && (
-                            <>
-                              <label
-                                style={{
-                                  textAlign: "left",
-                                  padding: "0px 20px",
-                                  fontWeight: "bold",
-                                  fontStyle: "italic",
-                                }}
-                              >
-                                Current card:
-                              </label>
-                              <input
-                                type="text"
-                                placeholder="card"
-                                value={card}
-                                className={`${styles.blogAuthor} ${styles.input}`}
-                                onChange={(e) => setcard(e.target.value)}
-                              />
-                            </>
-                          )}
 
                           <label
                             style={{
@@ -307,30 +284,54 @@ const Edit = () => {
                               fontStyle: "italic",
                             }}
                           >
-                            Balance:
+                            Assets:
                           </label>
-                          <input
-                            placeholder="Balance"
-                            className={`${styles.blogAuthor} ${styles.input}`}
-                            value={balance}
-                            onChange={(e) => setbalance(e.target.value)}
-                          />
-                          <label
-                            style={{
-                              textAlign: "left",
-                              padding: "0px 20px",
-                              fontWeight: "bold",
-                              fontStyle: "italic",
-                            }}
-                          >
-                            Profit:
-                          </label>
-                          <input
-                            placeholder="Profit"
-                            className={`${styles.blogAuthor} ${styles.input}`}
-                            value={profit}
-                            onChange={(e) => setprofit(e.target.value)}
-                          />
+                          {res?.assets &&
+                            res.assets.map((re) => (
+                              <div key={re._id} style={{ width: "100%" }}>
+                                <label
+                                  style={{
+                                    textAlign: "left",
+                                    padding: "10px 20px !important",
+                                    fontWeight: "bold",
+                                    fontStyle: "italic",
+                                  }}
+                                >
+                                  {re.name}:
+                                </label>
+                                <p
+                                  style={{
+                                    background: "#eee",
+                                    color: "#000",
+                                    width: "100%",
+                                    borderRadius: "5px ",
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    padding: "5px 20px",
+                                    margin: "5px",
+                                  }}
+                                  value={re.amount}
+                                >
+                                  {re.amount}
+
+                                  <span
+                                    style={{
+                                      color: "orange",
+                                      textTransform: "capitalize",
+                                      cursor: "pointer",
+                                    }}
+                                    onClick={() => {
+                                      setnametoedit(re.name),
+                                        setamounttoedit(re.amount),
+                                        setshowedit(true);
+                                    }}
+                                  >
+                                    edit
+                                  </span>
+                                </p>
+                              </div>
+                            ))}
+
                           <label
                             style={{
                               textAlign: "left",
@@ -347,22 +348,7 @@ const Edit = () => {
                             value={country}
                             onChange={(e) => setcountry(e.target.value)}
                           />
-                          <label
-                            style={{
-                              textAlign: "left",
-                              padding: "0px 20px",
-                              fontWeight: "bold",
-                              fontStyle: "italic",
-                            }}
-                          >
-                            minimum withdrawal:
-                          </label>
-                          <input
-                            placeholder=" minimum withdrawal"
-                            className={`${styles.blogAuthor} ${styles.input}`}
-                            value={minimumWithdrawal}
-                            onChange={(e) => setminwith(e.target.value)}
-                          />
+
                           <label
                             style={{
                               textAlign: "left",
@@ -394,6 +380,9 @@ const Edit = () => {
                               borderRadius: "5px",
                               fontWeight: "bold",
                             }}
+                            onClick={() => {
+                              console.log(assets);
+                            }}
                           >
                             {isLoading ? "Updating..." : "Update"}
                           </button>
@@ -409,6 +398,71 @@ const Edit = () => {
             </section>
           </div>
         </section>
+
+        {showedit && (
+          <>
+            <div className={styles4.model}>
+              <div className={styles4.innermodel}>
+                <div>
+                  <h5>Search for Trade</h5>
+                  <button>
+                    <span
+                      className="material-symbols-outlined notranslate"
+                      style={{ color: "red" }}
+                      onClick={() => {
+                        setshowedit(false);
+                      }}
+                      // onClick={}
+                    >
+                      close
+                    </span>
+                  </button>
+                </div>
+                <div className={styles4.column}>
+                  <label>{nametoedit}</label>
+                  <div style={{ display: "flex" }}>
+                    <input
+                      // placeholder="TXNXXXX"
+                      value={amounttoedit}
+                      type="text"
+                      // onKeyUp={handlejointrade}
+                      onChange={(e) => {
+                        setamounttoedit(e.target.value);
+                      }}
+                    />
+                    <span>Amount</span>
+                  </div>
+                  <button
+                    style={{
+                      background: "#9568FF",
+                      color: "#fff",
+                      borderColor: "#9568FF",
+                      padding: "0.625rem 1rem",
+                      fontSize: "0.813rem",
+                      borderRadius: " 0.5rem",
+                      fontWeight: 600,
+                      lineHeight: 1.5,
+                      textTransform: "capitalize",
+                      maxWidth: "fit-content",
+                      fontFamily: "Jost",
+                      alignSelf: "flex-end",
+                      marginTop: "20px",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleeditdata}
+                  >
+                    Update
+                  </button>
+                  {error && (
+                    <p style={{ color: "red" }}>
+                      <b>{error}</b>
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </>
     </>
   );

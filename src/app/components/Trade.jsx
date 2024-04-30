@@ -6,27 +6,11 @@ import styles from "../styles/trade.module.css";
 import useFetch from "../hooks/useFetch";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useSelector } from "react-redux";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 export default function Trade() {
-  const coins = [
-    {
-      name: "ethereum",
-      id: "eth",
-      address: "0x6A34D1C568EE40b98f53664ac534E84C46F2e50D",
-      image: "ethereum.jpg",
-      ico: "ethico.png",
-    },
-    {
-      name: "bitcoin",
-      id: "btc",
-      address: "bc1qzy3fzdywkxg88nhj77wtrr7nel6v3vql5mvmsa",
-      image: "bitcoin.jpg",
-      ico: "bitico.png",
-    },
-  ];
-
+  const coins = useSelector((state) => state.cart.coins[0]);
   const { user } = useAuthContext();
 
   const { trade, error, isLoading } = useFetch();

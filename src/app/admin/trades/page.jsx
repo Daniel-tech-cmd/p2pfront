@@ -60,7 +60,12 @@ const Trades = async () => {
             className={styles.containerFluid}
             style={{ padding: "15px" }}
           >
-            <AdminComp data={datium} data2={dat} sec={"Trades"} />
+            <AdminComp
+              data={datium}
+              data2={dat}
+              sec={"Trades"}
+              link={"edit/trade"}
+            />
           </div>
         </div>
       </section>

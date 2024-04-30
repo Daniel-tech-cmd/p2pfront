@@ -18,7 +18,7 @@ const Sidenav = () => {
         <div>
           <div className={styles.imgcont}>
             <Image src={"/log.png"} alt="logo" width={40} height={40} />
-            <Hamburg />
+
             <Image
               src={"/logo.png"}
               alt="logo"
@@ -26,6 +26,7 @@ const Sidenav = () => {
               height={30}
               className="logo"
             />
+            <Hamburg />
           </div>
           <div className={styles.links}>
             <Link className={styles.link} href={`/account/dashboard/`}>
