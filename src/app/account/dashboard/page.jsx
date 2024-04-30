@@ -7,6 +7,7 @@ import Link from "next/link";
 import Trade from "@/app/components/Trade";
 import TradingViewWidget from "@/app/components/Tradingview";
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 
 async function getdatabyId(id) {
   const res = await fetch(`${process.env.URL}/api/user/oneuser/${id}`, {

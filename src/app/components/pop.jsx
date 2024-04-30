@@ -36,7 +36,6 @@ export default function Poop() {
     <>
       {show && <Jointrade />}
       {showdepo && <Depositcrypto />}
-      {showdepo && <Depositcrypto />}
       {showwith && <Withdraw />}
       {showsuccess && <Success />}
       {showalert && <Alert />}

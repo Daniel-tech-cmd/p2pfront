@@ -114,7 +114,6 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        toast.success("Investment Request,succesful!");
       }
 
       // Handle successful response here, e.g., show a success message
@@ -162,7 +161,6 @@ const useFetch = () => {
         setResponseData(response);
         setIsLoading(false);
         toggleshowalert();
-        toast.success("Deposit request, successful.");
         // toast.dismiss();
       }
 
@@ -192,7 +190,6 @@ const useFetch = () => {
       if (response.status !== 200) {
         setIsLoading(false);
         setError(response.data.error);
-        toast.error(response.data.error);
       }
 
       if (response.status === 200) {
@@ -245,7 +242,7 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        toast.success("Updated");
+        alert("Updated");
       }
 
       // Handle successful response here, e.g., show a success message
@@ -295,8 +292,7 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        toast.success("Updated");
-        console.log(response.data);
+        alert("Updated");
       }
 
       // Handle successful response here, e.g., show a success message
@@ -347,8 +343,7 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        toast.success("Updated");
-        console.log(response.data);
+        alert("Updated");
       }
 
       // Handle successful response here, e.g., show a success message
@@ -506,7 +501,6 @@ const useFetch = () => {
         setResponseData(response);
         setIsLoading(false);
         toggleshowalert();
-        toast.success("Trade request, successful.");
         // toast.dismiss();
       }
 
