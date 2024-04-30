@@ -4,6 +4,7 @@ import { NavProvider } from "./contexts/navcon";
 import { OpenProvider } from "./contexts/openseccontext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 import Poop from "./components/pop";
+import SmartsuppChat from "./components/Tawtto";
 import Layou from "./components/Layou";
 
 const jost = Jost({
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
             <OpenProvider>
               <NavProvider>
                 {children}
+                <SmartsuppChat />
                 <Poop />
               </NavProvider>
             </OpenProvider>
