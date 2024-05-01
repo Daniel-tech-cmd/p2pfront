@@ -18,7 +18,7 @@ export default function Poop() {
     fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          console.error("There was a problem with the fetch operation:", error);
         }
         return response.json();
       })
