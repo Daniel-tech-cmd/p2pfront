@@ -107,7 +107,6 @@ const useSignup = () => {
         Cookies.set("user", JSON.stringify(response.data));
         distp(createuser(response.data));
         setIsLoading(false);
-        toast.success("Login successful!");
         router.push(`/account/dashboard/`);
       }
       if (response.status === 201) {
