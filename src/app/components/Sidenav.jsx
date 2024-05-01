@@ -17,7 +17,7 @@ const Sidenav = () => {
       <section className={styles.sec}>
         <div>
           <div className={styles.imgcont}>
-            <Image src={"/log.png"} alt="logo" width={40} height={40} />
+            {/* <Image src={"/log.png"} alt="logo" width={40} height={40} /> */}
 
             <Image
               src={"/logo.png"}

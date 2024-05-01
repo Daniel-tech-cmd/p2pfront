@@ -20,7 +20,7 @@ const Nav = () => {
           <div className={styles.logocont}>
             <h2 className="logo">
               {" "}
-              <Link href={"/"}>P2pdesk </Link>
+              <Link href={"/"}>Supayroom </Link>
             </h2>
           </div>
           <div
@@ -31,7 +31,7 @@ const Nav = () => {
             <div className={styles.smalllogo}>
               <h2 className="logo">
                 {" "}
-                <Link href={"/"}>P2pdesk </Link>
+                <Link href={"/"}>Supayroom </Link>
               </h2>
               <div
                 onClick={() => {
