@@ -26,7 +26,7 @@ export default async function page() {
   const cookiestore = cookies();
   const userjson = cookiestore.get("user");
 
-  const user = JSON.parse(userjson?.value);
+  const user = JSON?.parse(userjson?.value);
 
   const data = getdatabyId(user._id);
   const [dat] = await Promise.all([data]);
