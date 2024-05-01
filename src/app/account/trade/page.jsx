@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Sidenav from "@/app/components/Sidenav";
 import Name from "@/app/components/Name";
 import { useSearchParams } from "next/navigation";
@@ -12,9 +12,11 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useSelector } from "react-redux";
 
 import Welcomemsg from "@/app/components/Welcomemsg";
+import Alerttrde from "@/app/components/Alerttrade";
 
 export default function page() {
   const { jointrade, responseData, error, isLoading } = useFetch();
+  const [showaler, setshoaler] = useState(false);
   const router = useSearchParams();
   const id = router.get("id");
 

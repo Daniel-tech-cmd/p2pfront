@@ -10,6 +10,7 @@ export const OpenProvider = ({ children }) => {
   const [showwith, setshowwith] = useState(false);
   const [showsuccess, setshowsuccess] = useState(false);
   const [showalert, setshowalert] = useState(false);
+  const [showalerttrade, setshowalerttrade] = useState(false);
 
   const toggle = () => {
     setshow((prev) => (prev === true ? false : true));
@@ -31,6 +32,9 @@ export const OpenProvider = ({ children }) => {
   const toggleshowalert = () => {
     setshowalert((prev) => (prev === true ? false : true));
   };
+  const toggleshowalertrade = () => {
+    setshowalerttrade((prev) => (prev === true ? false : true));
+  };
   return (
     <openseccon.Provider
       value={{
@@ -48,6 +52,8 @@ export const OpenProvider = ({ children }) => {
         toggleshowalert,
         setshowsuccess,
         togglesucces,
+        toggleshowalertrade,
+        showalerttrade,
       }}
     >
       <div> {children} </div>

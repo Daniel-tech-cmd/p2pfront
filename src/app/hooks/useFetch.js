@@ -498,11 +498,12 @@ const useFetch = () => {
         setIsLoading(false);
         toast.error("Network error");
       }
+      const res = await response.json();
       if (response.ok) {
-        setResponseData(response);
+        setResponseData(res);
         setIsLoading(false);
         toggleshowalert();
-        // toast.dismiss();
+        router.push(`/account/trade?id=${res.id}`);
       }
 
       // Handle successful response here, e.g., show a success message
