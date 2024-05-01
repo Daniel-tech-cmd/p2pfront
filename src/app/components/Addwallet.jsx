@@ -86,7 +86,7 @@ export default function Addwallet() {
           borderColor: "#3A2D60",
         }}
       >
-        Start a new trade
+        Add Wallet
       </p>
       <form
         onSubmit={(e) => {

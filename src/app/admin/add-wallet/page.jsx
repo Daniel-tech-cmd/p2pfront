@@ -27,7 +27,7 @@ export default async function page() {
 
           <h3 style={{ color: "#fff", fontSize: "18px", margin: "10px" }}>
             {" "}
-            Start Trade
+            Add wallet
           </h3>
         </div>
         <div

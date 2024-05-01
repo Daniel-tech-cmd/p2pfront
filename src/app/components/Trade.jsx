@@ -46,10 +46,10 @@ export default function Trade() {
       name: assettosell,
       amount: amounttosend,
     };
-    const sellingadress = coins.find(
+    const sellingadress = coins?.find(
       (item) => item.name == assettosell
     ).address;
-    const buyingadress = coins.find((item) => item.name == assettobuy).address;
+    const buyingadress = coins?.find((item) => item.name == assettobuy).address;
     const data = {
       assettobuy: assetbuy,
       assettosell: assetsell,
@@ -103,9 +103,9 @@ export default function Trade() {
               }}
             >
               <option value="">select coin</option>
-              {coins.map((coin) => (
-                <option value={coin.name} key={coin.id}>
-                  {coin.name}
+              {coins?.map((coin) => (
+                <option value={coin?.name} key={coin?.id}>
+                  {coin?.name}
                 </option>
               ))}
             </select>
@@ -141,9 +141,9 @@ export default function Trade() {
             >
               <option value="">select coin</option>
 
-              {coins.map((coin) => (
-                <option value={coin.name} key={coin.id}>
-                  {coin.name}
+              {coins?.map((coin) => (
+                <option value={coin?.name} key={coin?.id}>
+                  {coin?.name}
                 </option>
               ))}
             </select>

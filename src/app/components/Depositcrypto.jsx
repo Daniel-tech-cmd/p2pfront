@@ -85,13 +85,13 @@ export default function Depositcrypto() {
                 style={{ textTransform: "capitalize", fontFamily: "Jost" }}
               >
                 <option value={""}> select coin</option>
-                {coins.map((coi) => (
+                {coins?.map((coi) => (
                   <option
-                    key={coi.id}
-                    value={coi.name}
+                    key={coi?.id}
+                    value={coi?.name}
                     style={{ padding: "20px 0" }}
                   >
-                    {coi.name}
+                    {coi?.name}
                   </option>
                 ))}
                 {/* <option value="polygon">polygon</option> */}
