@@ -140,6 +140,7 @@ const useFetch = () => {
   async function markaspaid(data) {
     setError(null);
     setIsLoading(true);
+    data.email = user?.email;
     try {
       const response = await axios.patch(
         `${process.env.NEXT_PUBLIC_URL}/api/transact/markaspaid/${user?._id}`,
