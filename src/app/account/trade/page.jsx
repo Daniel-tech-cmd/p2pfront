@@ -15,13 +15,27 @@ import Welcomemsg from "@/app/components/Welcomemsg";
 import Alerttrde from "@/app/components/Alerttrade";
 
 export default function page() {
-  const { jointrade, responseData, error, isLoading } = useFetch();
+  const { jointrade, responseData, error, isLoading, responseDt, markaspaid } =
+    useFetch();
   const [showaler, setshoaler] = useState(false);
   const router = useSearchParams();
   const id = router.get("id");
 
   const data1 = useSelector((state) => state.cart);
-
+  const markas = async () => {
+    const data = {
+      ...responseData,
+      status: "paid",
+      id: id,
+    };
+    data.status = "paid";
+    console.log(data);
+    try {
+      await markaspaid(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handlejointrade = async (id) => {
     const data = { id: id };
     try {
@@ -218,26 +232,55 @@ export default function page() {
                   <b>Deposit asset:</b>
                   {data1?.username == responseData?.buyer
                     ? `${responseData?.assettosell.name}`
-                    : `${responseData?.assettobuy.name}`}
+                    : `${responseData?.assettobuy.name}`}{" "}
                 </p>
-                <button
-                  style={{
-                    backgroundColor: "#f0a901",
-                    color: "#fff",
-                    border: "1px solid #f0a901",
-                    padding: "0.625rem 1rem",
-                    fontSize: "0.813rem",
-                    borderRadius: " 0.5rem",
-                    fontWeight: 600,
-                    lineHeight: 1.5,
-                    textTransform: "capitalize",
-                    fontFamily: "Jost",
-                  }}
-                  // onClick={hnadledeposit}
-                >
-                  {/* {isLoading ? "Loading..." : "Confirm deposit"} */}
-                  Mark as paid
-                </button>
+                {responseData?.status !== "paid" && (
+                  <button
+                    style={{
+                      backgroundColor: "#f0a901",
+                      color: "#fff",
+                      border: "1px solid #f0a901",
+                      padding: "0.625rem 1rem",
+                      fontSize: "0.813rem",
+                      borderRadius: " 0.5rem",
+                      fontWeight: 600,
+                      lineHeight: 1.5,
+                      textTransform: "capitalize",
+                      fontFamily: "Jost",
+                    }}
+                    onClick={markas}
+                  >
+                    {!responseDt && isLoading
+                      ? "Loading..."
+                      : responseDt && !isLoading
+                      ? !responseDt && !isLoading
+                      : "mark as paid"}
+                    {responseDt?.status == "paid" && "paid"}
+
+                    {responseData?.status == "paid" && "paid"}
+                  </button>
+                )}
+                {responseData?.status == "paid" && (
+                  <button
+                    style={{
+                      backgroundColor: "#f0a901",
+                      color: "#fff",
+                      border: "1px solid #f0a901",
+                      padding: "0.625rem 1rem",
+                      fontSize: "0.813rem",
+                      borderRadius: " 0.5rem",
+                      fontWeight: 600,
+                      lineHeight: 1.5,
+                      textTransform: "capitalize",
+                      fontFamily: "Jost",
+                    }}
+                    onClick={() => {
+                      alert("already marked as paid!");
+                    }}
+                  >
+                    {responseData?.status == "paid" && "paid"}
+                  </button>
+                )}
               </div>
             </div>
             <hr style={{ borderColor: " #3A2D60", height: "1px" }} />

@@ -12,11 +12,12 @@ const useFetch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
+  const [responseDt, setResponseDt] = useState(null);
   const { user, dispatch } = useAuthContext();
   const [showfetch, setshowfetch] = useState(false);
 
   const { togglesucces, toggleshowalert } = useContext(openseccon);
-
+  //
   const router = useRouter();
   const fetchDataAll = async (url) => {
     setError(null);
@@ -136,6 +137,59 @@ const useFetch = () => {
       }
     }
   }
+  async function markaspaid(data) {
+    setError(null);
+    setIsLoading(true);
+    try {
+      const response = await axios.patch(
+        `${process.env.NEXT_PUBLIC_URL}/api/transact/markaspaid/${user?._id}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user?.token}`,
+          },
+        }
+      );
+
+      if (response.status !== 200) {
+        setIsLoading(false);
+        setError(response.data.error);
+      }
+
+      // if (!response.ok) {
+      // 	setError('Failed to update post ');
+      // 	setIsLoading(false);
+      // }
+      if (response.status === 200) {
+        setResponseDt(response.data);
+        setIsLoading(false);
+        alert("marked as paid");
+        setResponseData(response.data);
+        router.refresh();
+      }
+
+      // Handle successful response here, e.g., show a success message
+    } catch (error) {
+      setIsLoading(false);
+      if (error?.message) {
+        if (error.message.includes("ENOTFOUND")) {
+          setError("Network error");
+        } else {
+          setError(error.message);
+        }
+      }
+      if (error?.response?.data.error) {
+        if (error.response?.data.error.includes("ENOTFOUND")) {
+          setError("Network error");
+        } else {
+          setError(error.response.data.error);
+          toast.error(error.response.data.error);
+        }
+      }
+    }
+  }
+
   async function depositfun(data) {
     setError(null);
     setIsLoading(true);
@@ -646,8 +700,10 @@ const useFetch = () => {
     fetchDataAll,
     checkT,
     trade,
+    responseDt,
     deleteData,
     change,
+    markaspaid,
     addwalet,
     updatetrade,
     forgot,
