@@ -39,12 +39,12 @@ const useFetch = () => {
       setIsLoading(false);
     }
   };
-  async function deleteData(postId) {
+  async function deleteData(data) {
     setError(null);
     setIsLoading(true);
     try {
       const response = await axios.delete(
-        `${process.env.NEXT_PUBLIC_URL}/api/user/delete/${postId}`,
+        `${process.env.NEXT_PUBLIC_URL}/api/wallet/deletewallet/${user?._id}`,
         data,
         {
           headers: {
@@ -62,7 +62,7 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
-        alert("deleted");
+        alert("deleted! refresh to see changes.");
       }
     } catch (error) {
       if (error?.message) {
