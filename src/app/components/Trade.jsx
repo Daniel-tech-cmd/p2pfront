@@ -104,7 +104,7 @@ export default function Trade() {
             >
               <option value="">select coin</option>
               {coins?.map((coin) => (
-                <option value={coin?.name} key={coin?.id}>
+                <option value={coin?.name} key={coin?._id}>
                   {coin?.name}
                 </option>
               ))}
@@ -142,7 +142,7 @@ export default function Trade() {
               <option value="">select coin</option>
 
               {coins?.map((coin) => (
-                <option value={coin?.name} key={coin?.id}>
+                <option value={coin?.name} key={coin?._id}>
                   {coin?.name}
                 </option>
               ))}

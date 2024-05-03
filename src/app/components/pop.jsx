@@ -15,20 +15,31 @@ export default function Poop() {
   const disp = useDispatch();
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`)
-      .then((response) => {
-        if (!response.ok) {
+    try {
+      fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`)
+        .then((response) => {
+          if (!response.ok) {
+            console.error(
+              "There was a problem with the fetch operation:",
+              error
+            );
+          }
+          return response.json();
+        })
+        .then((data) => {
+          disp(addcoin(data));
+        })
+        .catch((error) => {
           console.error("There was a problem with the fetch operation:", error);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        disp(addcoin(data));
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
-  });
+        });
+    } catch (e) {
+      if (e.cause instanceof AggregateError) {
+        console.error(e.cause.errors);
+      } else {
+        console.log(es);
+      }
+    }
+  }, []);
 
   const { show, showdepo, showwith, showsuccess, showalert } =
     useContext(openseccon);
