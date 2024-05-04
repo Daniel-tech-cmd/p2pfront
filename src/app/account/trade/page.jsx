@@ -25,13 +25,14 @@ export default function page() {
   const markas = async () => {
     const data = {
       ...responseData,
-      status: "paid",
+      // status: "paid",
       id: id,
     };
-    data.status = "paid";
+    // data.status = "paid";
     console.log(data);
     try {
       await markaspaid(data);
+      //
     } catch (error) {
       console.log(error);
     }
@@ -218,68 +219,167 @@ export default function page() {
                   }}
                 >
                   Deposit address:{" "}
-                  {data1?.username == responseData?.buyer
+                  {data1?.user.username === responseData?.buyer
                     ? `${responseData?.sellingadress}`
                     : `${responseData?.buyingadress}`}
                 </p>
                 <p>
                   <b>Deposit Amount:</b>
-                  {data1?.username == responseData?.buyer
+                  {data1?.user.username == responseData?.buyer
                     ? `${responseData?.assettosell.amount}`
                     : `${responseData?.assettobuy.amount}`}
                 </p>
                 <p>
                   <b>Deposit asset:</b>
-                  {data1?.username == responseData?.buyer
+                  {data1?.user.username == responseData?.buyer
                     ? `${responseData?.assettosell.name}`
-                    : `${responseData?.assettobuy.name}`}{" "}
+                    : `${responseData?.assettobuy.name}`}
                 </p>
-                {responseData?.status !== "paid" && (
-                  <button
-                    style={{
-                      backgroundColor: "#f0a901",
-                      color: "#fff",
-                      border: "1px solid #f0a901",
-                      padding: "0.625rem 1rem",
-                      fontSize: "0.813rem",
-                      borderRadius: " 0.5rem",
-                      fontWeight: 600,
-                      lineHeight: 1.5,
-                      textTransform: "capitalize",
-                      fontFamily: "Jost",
-                    }}
-                    onClick={markas}
-                  >
-                    {!responseDt && isLoading
-                      ? "Loading..."
-                      : responseDt && !isLoading
-                      ? !responseDt && !isLoading
-                      : "mark as paid"}
-                    {responseDt?.status == "paid" && "paid"}
-
-                    {responseData?.status == "paid" && "paid"}
-                  </button>
+                {data1?.user.username === responseData?.buyer && (
+                  <>
+                    {!responseDt && isLoading ? (
+                      <p
+                        style={{
+                          backgroundColor: "#f0a901",
+                          color: "#fff",
+                          border: "1px solid #f0a901",
+                          padding: "0.625rem 1rem",
+                          fontSize: "0.813rem",
+                          borderRadius: " 0.5rem",
+                          fontWeight: 600,
+                          lineHeight: 1.5,
+                          textTransform: "capitalize",
+                          fontFamily: "Jost",
+                          width: "fit-content",
+                        }}
+                      >
+                        {" "}
+                        "Loading..."
+                      </p>
+                    ) : (
+                      <>
+                        {responseData?.buyerstatus !== "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={markas}
+                          >
+                            Mark as{" "}
+                            {responseDt?.buyerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                        {responseData?.buyerstatus === "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={() => {
+                              alert("Already marked as paid!");
+                            }}
+                          >
+                            Already{" "}
+                            {responseData?.buyerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </>
                 )}
-                {responseData?.status == "paid" && (
-                  <button
-                    style={{
-                      backgroundColor: "#f0a901",
-                      color: "#fff",
-                      border: "1px solid #f0a901",
-                      padding: "0.625rem 1rem",
-                      fontSize: "0.813rem",
-                      borderRadius: " 0.5rem",
-                      fontWeight: 600,
-                      lineHeight: 1.5,
-                      textTransform: "capitalize",
-                      fontFamily: "Jost",
-                    }}
-                    onClick={() => {
-                      alert("already marked as paid!");
-                    }}
-                  >
-                    {responseData?.status == "paid" && "paid"}
-                  </button>
+                {data1?.user.username === responseData?.seller && (
+                  <>
+                    {!responseDt && isLoading ? (
+                      <p
+                        style={{
+                          backgroundColor: "#f0a901",
+                          color: "#fff",
+                          border: "1px solid #f0a901",
+                          padding: "0.625rem 1rem",
+                          fontSize: "0.813rem",
+                          borderRadius: " 0.5rem",
+                          fontWeight: 600,
+                          lineHeight: 1.5,
+                          textTransform: "capitalize",
+                          fontFamily: "Jost",
+                          width: "fit-content",
+                        }}
+                      >
+                        {" "}
+                        "Loading..."
+                      </p>
+                    ) : (
+                      <>
+                        {responseData?.sellerstatus !== "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={markas}
+                          >
+                            Mark as{" "}
+                            {responseDt?.sellerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                        {responseData?.sellerstatus === "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={() => {
+                              alert("Already marked as paid!");
+                            }}
+                          >
+                            Already{" "}
+                            {responseData?.sellerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </>
                 )}
               </div>
             </div>

@@ -165,7 +165,8 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseDt(response.data);
         setIsLoading(false);
-        alert("marked as paid");
+        console.log(response.data);
+        alert("marked as paid! refresh to view changes.");
         setResponseData(response.data);
         router.refresh();
       }
@@ -598,6 +599,7 @@ const useFetch = () => {
       if (response.status === 200) {
         setResponseData(response.data);
         setIsLoading(false);
+        console.log(response.data);
       }
     } catch (error) {
       if (error?.message) {
