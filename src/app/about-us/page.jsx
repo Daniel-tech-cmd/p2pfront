@@ -19,7 +19,7 @@ export default function page() {
           <h1>About our company</h1>
           <p>
             We are the One-stop solution to buy, sell and swap cryptocurrency
-            with ease
+            with ease.
           </p>
           <Image
             className={styles1.image}
