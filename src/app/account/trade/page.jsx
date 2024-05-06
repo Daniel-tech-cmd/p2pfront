@@ -235,79 +235,6 @@ export default function page() {
                     ? `${responseData?.assettosell.name}`
                     : `${responseData?.assettobuy.name}`}
                 </p>
-                {data1?.user.username === responseData?.buyer && (
-                  <>
-                    {!responseDt && isLoading ? (
-                      <p
-                        style={{
-                          backgroundColor: "#f0a901",
-                          color: "#fff",
-                          border: "1px solid #f0a901",
-                          padding: "0.625rem 1rem",
-                          fontSize: "0.813rem",
-                          borderRadius: " 0.5rem",
-                          fontWeight: 600,
-                          lineHeight: 1.5,
-                          textTransform: "capitalize",
-                          fontFamily: "Jost",
-                          width: "fit-content",
-                        }}
-                      >
-                        {" "}
-                        "Loading..."
-                      </p>
-                    ) : (
-                      <>
-                        {responseData?.buyerstatus !== "paid" && (
-                          <button
-                            style={{
-                              backgroundColor: "#f0a901",
-                              color: "#fff",
-                              border: "1px solid #f0a901",
-                              padding: "0.625rem 1rem",
-                              fontSize: "0.813rem",
-                              borderRadius: " 0.5rem",
-                              fontWeight: 600,
-                              lineHeight: 1.5,
-                              textTransform: "capitalize",
-                              fontFamily: "Jost",
-                            }}
-                            onClick={markas}
-                          >
-                            Mark as{" "}
-                            {responseDt?.buyerstatus === "paid"
-                              ? "paid"
-                              : "paid"}
-                          </button>
-                        )}
-                        {responseData?.buyerstatus === "paid" && (
-                          <button
-                            style={{
-                              backgroundColor: "#f0a901",
-                              color: "#fff",
-                              border: "1px solid #f0a901",
-                              padding: "0.625rem 1rem",
-                              fontSize: "0.813rem",
-                              borderRadius: " 0.5rem",
-                              fontWeight: 600,
-                              lineHeight: 1.5,
-                              textTransform: "capitalize",
-                              fontFamily: "Jost",
-                            }}
-                            onClick={() => {
-                              alert("Already marked as paid!");
-                            }}
-                          >
-                            Already{" "}
-                            {responseData?.buyerstatus === "paid"
-                              ? "paid"
-                              : "paid"}
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </>
-                )}
                 {data1?.user.username === responseData?.seller && (
                   <>
                     {!responseDt && isLoading ? (
@@ -373,6 +300,79 @@ export default function page() {
                           >
                             Already{" "}
                             {responseData?.sellerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </>
+                )}
+                {data1?.user.username === responseData?.buyer && (
+                  <>
+                    {!responseDt && isLoading ? (
+                      <p
+                        style={{
+                          backgroundColor: "#f0a901",
+                          color: "#fff",
+                          border: "1px solid #f0a901",
+                          padding: "0.625rem 1rem",
+                          fontSize: "0.813rem",
+                          borderRadius: " 0.5rem",
+                          fontWeight: 600,
+                          lineHeight: 1.5,
+                          textTransform: "capitalize",
+                          fontFamily: "Jost",
+                          width: "fit-content",
+                        }}
+                      >
+                        {" "}
+                        "Loading..."
+                      </p>
+                    ) : (
+                      <>
+                        {responseData?.buyerstatus !== "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={markas}
+                          >
+                            Mark as{" "}
+                            {responseDt?.buyerstatus === "paid"
+                              ? "paid"
+                              : "paid"}
+                          </button>
+                        )}
+                        {responseData?.buyerstatus === "paid" && (
+                          <button
+                            style={{
+                              backgroundColor: "#f0a901",
+                              color: "#fff",
+                              border: "1px solid #f0a901",
+                              padding: "0.625rem 1rem",
+                              fontSize: "0.813rem",
+                              borderRadius: " 0.5rem",
+                              fontWeight: 600,
+                              lineHeight: 1.5,
+                              textTransform: "capitalize",
+                              fontFamily: "Jost",
+                            }}
+                            onClick={() => {
+                              alert("Already marked as paid!");
+                            }}
+                          >
+                            Already{" "}
+                            {responseData?.buyerstatus === "paid"
                               ? "paid"
                               : "paid"}
                           </button>

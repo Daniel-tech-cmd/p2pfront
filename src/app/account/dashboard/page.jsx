@@ -38,12 +38,14 @@ export default async function page() {
       <div className={styles.seconddiv}>
         <Name data={dat} section={"Dashboard"} />
         <div className={styles.containerFluid}>
-          <div className={styles.row} style={{ height: "fit-content" }}>
+          <div
+            className={styles.row}
+            style={{ height: "fit-content", margin: "10px" }}
+          >
             <BScard />
             <div
               className="card"
               style={{
-                maxWidth: "653px",
                 width: "100%",
                 padding: 0,
                 maxHeight: "200px",
@@ -96,7 +98,10 @@ export default async function page() {
               <TradingViewWidget />
             </div>
           </div>
-          <div style={{ width: "33.3%" }} className={styles.trade}>
+          <div
+            style={{ width: "33.3%", maxHeight: "fit-content" }}
+            className={styles.trade}
+          >
             <Trade />
           </div>
         </div>

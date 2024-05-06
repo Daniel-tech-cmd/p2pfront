@@ -27,7 +27,7 @@ const TransactTable = ({ data }) => {
               .map((tran) => (
                 <tr key={`${tran?._id}${tran?.id}`}>
                   <td data-label="Type">
-                    <Link href={`/account/trade?id=${tran?._id}`}>
+                    <Link href={`/account/trade?id=${tran?.id}`}>
                       <div className="text-end text-lg-start">
                         <p
                           style={{

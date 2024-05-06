@@ -22,7 +22,6 @@
 }
 .cont {
   display: flex;
-  max-width: 653px;
   max-height: 262px;
   width: 100%;
   overflow: hidden;

@@ -86,6 +86,11 @@
   display: flex;
   align-items: center;
 }
+@media (max-width: 1300px) {
+  .sec {
+    max-width: calc(100vw - 20px);
+  }
+}
 @media (max-width: 1020px) {
   .sec {
     max-width: 100%;

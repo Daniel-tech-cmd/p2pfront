@@ -36,7 +36,7 @@ export default function Poop() {
       if (e.cause instanceof AggregateError) {
         console.error(e.cause.errors);
       } else {
-        console.log(es);
+        console.log(e);
       }
     }
   }, []);
