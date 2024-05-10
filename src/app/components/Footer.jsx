@@ -12,7 +12,7 @@ const Footer = () => {
               <div>
                 <h2 className="logo">
                   {" "}
-                  <Link href={"/"}>P2pdesk </Link>
+                  <Link href={"/"}>Supayroom </Link>
                 </h2>
               </div>
               <p>
