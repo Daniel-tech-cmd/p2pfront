@@ -33,7 +33,6 @@ export default function page() {
           <div className={styles.cont}>
             <div className={styles.text}>
               <div className={styles.strike}>
-                {/* <Image src="/strike.png" width={21} height={21} alt="light image" /> */}
                 OUR MISSION
               </div>
               <div>
