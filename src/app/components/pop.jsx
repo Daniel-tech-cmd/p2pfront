@@ -17,7 +17,7 @@ export default function Poop() {
    useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/allwallet`, {
           method: 'GET',
           headers: {
             'Cache-Control': 'no-store',  // Prevent caching
