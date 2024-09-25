@@ -33,7 +33,7 @@ export default function page() {
           <div className={styles.cont}>
             <div className={styles.text}>
               <div className={styles.strike}>
-                OUR MISSION
+                OUR MISSION.
               </div>
               <div>
                 <h1 style={{ fontSize: "43px", textAlign: "start" }}>
