@@ -14,33 +14,32 @@ import { createuser, addcoin } from "../../redux/shopslice";
 export default function Poop() {
   const disp = useDispatch();
 
-  useEffect(() => {
-    try {
-      fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`)
-        .then((response) => {
-          if (!response.ok) {
-            console.error(
-              "There was a problem with the fetch operation:",
-              error
-            );
-          }
-          return response.json();
-        })
-        .then((data) => {
-          disp(addcoin(data));
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/wallet/all`, {
+          method: 'GET',
+          headers: {
+            'Cache-Control': 'no-store',  // Prevent caching
+            'Pragma': 'no-cache',         // HTTP 1.0 cache control
+            'Expires': '0',               // Expire immediately
+          },
         });
-    } catch (e) {
-      if (e.cause instanceof AggregateError) {
-        console.error(e.cause.errors);
-      } else {
-        console.log(e);
-      }
-    }
-  }, []);
 
+        if (!response.ok) {
+          console.error('There was a problem with the fetch operation:', response.statusText);
+          return;
+        }
+
+        const data = await response.json();
+        disp(addcoin(data));
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    };
+
+    fetchData();
+  }, [disp]);
   const { show, showdepo, showwith, showsuccess, showalert } =
     useContext(openseccon);
   return (
